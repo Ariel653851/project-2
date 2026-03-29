@@ -17,11 +17,7 @@ const chapters = [
     { id: "p-energie-1", title: "Énergie Mécanique", subject: "physique", level: "1ere" },
     { id: "p-fluide-1", title: "Fluides", subject: "physique", level: "1ere" },
     { id: "p-inter-1", title: "Interactions Fondamentales", subject: "physique", level: "1ere" },
-    { id: "p-ondes-1", title: "Ondes Mécaniques", subject: "physique", level: "1ere" },
-
-    // --- SECONDE (Empty chapters for now) ---
-    { id: "c-corps-2", title: "Corps purs et mélanges", subject: "chimie", level: "2nde" },
-    { id: "p-mouv-2", title: "Mouvement et interactions", subject: "physique", level: "2nde" }
+    { id: "p-ondes-1", title: "Ondes Mécaniques", subject: "physique", level: "1ere" }
 ];
 
 // --- DATA: FORMULAS (ONLY 1ERE) ---

@@ -314,9 +314,9 @@ header {
 }
 
 .chapter-card .card-info {
-    font-size: 0.8rem;
+    font-size: 0.9rem; /* Légèrement plus gros */
     color: var(--text-muted);
-    font-weight: 600;
+    font-weight: 700; /* Un peu plus gras */
 }
 
 /* FORMULA CARD */

@@ -124,31 +124,124 @@ header {
     border-color: var(--primary);
 }
 
-/* LEVEL BAR (TABS) */
+/* LEVEL BAR (Hidden by default, used as breadcrumb logic) */
 .level-bar {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
+    display: none; /* We use the Home view to select level now */
 }
 
-.level-tab {
-    padding: 0.6rem 1.25rem;
-    border-radius: 20px;
+/* HERO SECTION (HOME) */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 1rem;
+    min-height: 60vh;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.hero-card {
+    background: white;
+    border: 2px solid var(--border);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    width: 250px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.hero-card i {
+    width: 48px; height: 48px;
+    color: var(--primary);
+}
+
+.hero-card span {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.hero-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 30px rgba(37,99,235,0.1);
+}
+
+.hero-card.secondary i { color: var(--chimie); }
+.hero-card.secondary:hover { border-color: var(--chimie); box-shadow: 0 20px 30px rgba(5,150,105,0.1); }
+
+/* BREADCRUMB & SUBJECT TABS */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+#level-label {
+    color: var(--primary);
+    background: var(--primary-soft);
+    padding: 0.2rem 0.75rem;
+    border-radius: 8px;
+}
+
+.subject-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.sub-tab {
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
     border: 1px solid var(--border);
     background: white;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
     color: var(--text-muted);
 }
 
-.level-tab.active {
-    background: var(--primary);
+.sub-tab.active {
+    background: var(--text);
     color: white;
-    border-color: var(--primary);
+    border-color: var(--text);
+}
+
+.sub-tab:hover:not(.active) {
+    background: var(--bg);
+    border-color: var(--text-muted);
 }
 
 /* VIEW HEADER */

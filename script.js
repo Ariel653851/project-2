@@ -1,6 +1,6 @@
 /**
  * MAIMOLAB V3 - SCRIPT.JS
- * Chapter-based Navigation Architecture
+ * Portail Navigation with Chapter Grid & Subject Filtering
  */
 
 // --- DATA: CHAPTERS ---
@@ -19,14 +19,13 @@ const chapters = [
     { id: "p-inter-1", title: "Interactions Fondamentales", subject: "physique", level: "1ere" },
     { id: "p-ondes-1", title: "Ondes Mécaniques", subject: "physique", level: "1ere" },
 
-    // --- SECONDE (Placeholders) ---
-    { id: "c-milieu-2", title: "Constitution de la matière", subject: "chimie", level: "2nde" },
-    { id: "p-mouv-2", title: "Mouvement & Interactions", subject: "physique", level: "2nde" }
+    // --- SECONDE (Empty chapters for now) ---
+    { id: "c-corps-2", title: "Corps purs et mélanges", subject: "chimie", level: "2nde" },
+    { id: "p-mouv-2", title: "Mouvement et interactions", subject: "physique", level: "2nde" }
 ];
 
-// --- DATA: FORMULAS ---
+// --- DATA: FORMULAS (ONLY 1ERE) ---
 const formulas = [
-    // PREMIERE CHIMIE: MOLE
     { 
         id: "n-m-m", chapterId: "c-mol-1", title: "Quantité de matière (Masse)", 
         formula: "n = \\frac{m}{M}", 
@@ -41,7 +40,6 @@ const formulas = [
         properties: "Valable pour les solutés dissous.",
         units: "n [Qté matière] (mol), C [Conc. molaire] (mol/L), V [Volume] (L)"
     },
-    // PREMIERE CHIMIE: REDOX
     { 
         id: "redox-gen", chapterId: "c-redox-1", title: "Équation d'oxydoréduction", 
         formula: "Ox_1 + Red_2 \\rightarrow Red_1 + Ox_2", 
@@ -49,7 +47,6 @@ const formulas = [
         properties: "L'oxydant capte des électrons, le réducteur en cède.",
         units: "Ox [Oxydant], Red [Réducteur], e- [Électrons]"
     },
-    // PREMIERE CHIMIE: DOSAGES
     { 
         id: "beer-lamb", chapterId: "c-dosage-1", title: "Loi de Beer-Lambert", 
         formula: "A = \\epsilon \\cdot l \\cdot C", 
@@ -64,166 +61,156 @@ const formulas = [
         properties: "Permet de déterminer la concentration inconnue.",
         units: "n [Moles] (mol), a/b [Coef. stoechio]"
     },
-    // PREMIERE PHYSIQUE: ENERGIE
     { 
         id: "ec-1-v3", chapterId: "p-energie-1", title: "Énergie Cinétique", 
         formula: "E_c = \\frac{1}{2} m v^2", 
         definition: "Énergie liée au mouvement d'un système de masse m et de vitesse v.",
-        properties: "Ec toujours positive. Doubler la vitesse quadruple l'énergie.",
+        properties: "Ec toujours positive.",
         units: "Ec [Énergie Cin.] (J), m [Masse] (kg), v [Vitesse] (m/s)"
     },
-    { 
-        id: "epp-1-v3", chapterId: "p-energie-1", title: "Énergie Potentielle de pesanteur", 
-        formula: "E_{pp} = m \\cdot g \\cdot z", 
-        definition: "Énergie liée à l'altitude z d'un système dans le champ de pesanteur g.",
-        properties: "Dépend de l'origine choisie pour l'altitude z.",
-        units: "Epp [Énergie Pot.] (J), m [Masse] (kg), z [Altitude] (m)"
-    },
-    { 
-        id: "em-1-v3", chapterId: "p-energie-1", title: "Énergie Mécanique", 
-        formula: "E_m = E_c + E_{pp}", 
-        definition: "Somme de l'énergie cinétique et de l'énergie potentielle.",
-        properties: "Se conserve s'il n'y a pas de frottements.",
-        units: "Em [Énergie Méc.] (J)"
-    },
-    // PREMIERE PHYSIQUE: ELEC
     { 
         id: "p-ui", chapterId: "p-elec-1", title: "Puissance Électrique", 
         formula: "P = U \\cdot I", 
         definition: "Puissance reçue par un récepteur ou fournie par un générateur.",
         properties: "Relation valable en courant continu.",
         units: "P [Puissance] (W), U [Tension] (V), I [Intensité] (A)"
-    },
-    { 
-        id: "e-pt", chapterId: "p-elec-1", title: "Énergie Électrique", 
-        formula: "E = P \\cdot \\Delta t", 
-        definition: "Énergie consommée pendant une durée Δt.",
-        properties: "Généralement convertie en chaleur ou mouvement.",
-        units: "E [Énergie] (J ou kWh), P [Puissance] (W), Δt [Temps] (s)"
-    },
-    // PREMIERE PHYSIQUE: FLUIDES
-    { 
-        id: "p-fluide", chapterId: "p-fluide-1", title: "Loi de la Statique des Fluides", 
-        formula: "P_B - P_A = \\rho \\cdot g \\cdot (z_A - z_B)", 
-        definition: "Différence de pression entre deux points d'un fluide au repos.",
-        properties: "La pression augmente avec la profondeur.",
-        units: "P [Pression] (Pa), ρ [Masse Vol.] (kg/m³), g [Gravité] (N/kg), z [Altitude] (m)"
-    },
-    // SECONDE: EXAMPLES
-    { 
-        id: "poids-2-v3", chapterId: "p-mouv-2", title: "Poids d'un corps", 
-        formula: "P = m \\cdot g", 
-        definition: "Force d'attraction exercée par la Terre sur un objet.",
-        properties: "g ≈ 9,81 N/kg sur Terre.",
-        units: "P [Poids] (N), m [Masse] (kg), g [Gravité] (N/kg)"
     }
 ];
 
 // --- STATE MANAGEMENT ---
-let currentLevel = '1ere';
-let currentChapterId = null; // null means we are in the Chapter Grid view
+let currentView = 'home'; // 'home', 'chapters', 'formulas'
+let currentLevel = null;
+let currentSubject = 'all'; // 'all', 'physique', 'chimie'
+let currentChapterId = null;
 let currentSearch = '';
 
 // --- DOM ELEMENTS ---
+const homeView = document.getElementById('home-view');
+const appView = document.getElementById('app-view');
 const gridContainer = document.getElementById('grid-container');
-const levelTabs = document.querySelectorAll('.level-tab');
-const mainSearch = document.getElementById('main-search');
-const backBtn = document.getElementById('back-btn');
+const levelLabel = document.getElementById('level-label');
 const viewTitle = document.getElementById('view-title');
+const backBtn = document.getElementById('back-btn');
+const subjectTabs = document.getElementById('subject-tabs');
+const subTabs = document.querySelectorAll('.sub-tab');
+const mainSearch = document.getElementById('main-search');
 const noResults = document.getElementById('no-results');
 
 const modalOverlay = document.getElementById('modal-overlay');
-const mathBox = document.getElementById('math-box');
-const modalTitle = document.getElementById('modal-title');
-const modalTag = document.getElementById('modal-tag');
-const modalUnits = document.getElementById('modal-units');
-const modalDef = document.getElementById('modal-def');
-const modalProp = document.getElementById('modal-prop');
+
+// --- NAVIGATION FUNCTIONS ---
+
+function selectLevel(level) {
+    currentLevel = level;
+    currentView = 'chapters';
+    currentSubject = 'all';
+    currentChapterId = null;
+    levelLabel.textContent = level === '1ere' ? 'Première' : 'Seconde';
+    render();
+}
+
+function selectChapter(id) {
+    currentChapterId = id;
+    currentView = 'formulas';
+    render();
+}
+
+function goBack() {
+    if (currentSearch.length > 0) {
+        currentSearch = '';
+        mainSearch.value = '';
+        currentChapterId ? (currentView = 'formulas') : (currentView = 'chapters');
+    } else if (currentView === 'formulas') {
+        currentChapterId = null;
+        currentView = 'chapters';
+    } else if (currentView === 'chapters') {
+        currentView = 'home';
+        currentLevel = null;
+    }
+    render();
+}
 
 // --- RENDERING LOGIC ---
 
-function updateCounter() {
-    const countNum = document.getElementById('count-num');
-    if (countNum) countNum.textContent = formulas.length;
-}
-
 function render() {
-    gridContainer.innerHTML = '';
+    // Hide all main sections
+    homeView.classList.add('hidden');
+    appView.classList.add('hidden');
     noResults.classList.add('hidden');
+    subjectTabs.classList.add('hidden');
+    backBtn.classList.add('hidden');
 
     if (currentSearch.length > 0) {
+        showAppView();
         renderSearchResults();
-    } else if (currentChapterId === null) {
-        renderChapters();
-    } else {
-        renderFormulas(currentChapterId);
+    } else if (currentView === 'home') {
+        homeView.classList.remove('hidden');
+    } else if (currentView === 'chapters') {
+        showAppView();
+        subjectTabs.classList.remove('hidden');
+        backBtn.classList.remove('hidden');
+        renderChapterGrid();
+    } else if (currentView === 'formulas') {
+        showAppView();
+        backBtn.classList.remove('hidden');
+        renderFormulaList();
     }
 
     if (window.MathJax) window.MathJax.typesetPromise();
     lucide.createIcons();
-    updateCounter();
+    document.getElementById('count-num').textContent = formulas.length;
 }
 
-function renderChapters() {
-    backBtn.classList.add('hidden');
-    viewTitle.textContent = `Chapitres de ${currentLevel}`;
+function showAppView() {
+    appView.classList.remove('hidden');
+}
+
+function renderChapterGrid() {
+    viewTitle.textContent = "Chapitres";
+    gridContainer.innerHTML = '';
     
-    const filteredChapters = chapters.filter(c => c.level === currentLevel);
-    
-    if (filteredChapters.length === 0) {
-        noResults.classList.remove('hidden');
-        return;
+    let filtered = chapters.filter(c => c.level === currentLevel);
+    if (currentSubject !== 'all') {
+        filtered = filtered.filter(c => c.subject === currentSubject);
     }
 
-    filteredChapters.forEach(c => {
-        const formulaCount = formulas.filter(f => f.chapterId === c.id).length;
+    filtered.forEach(c => {
+        const count = formulas.filter(f => f.chapterId === c.id).length;
         const card = document.createElement('div');
         card.className = 'chapter-card';
         card.innerHTML = `
             <div class="subj-dot ${c.subject}"></div>
             <div class="card-info">${c.subject.toUpperCase()}</div>
             <h3>${c.title}</h3>
-            <div class="card-info">${formulaCount} formule(s)</div>
+            <div class="card-info">${count} formule(s)</div>
         `;
-        card.onclick = () => {
-            currentChapterId = c.id;
-            render();
-        };
+        card.onclick = () => selectChapter(c.id);
         gridContainer.appendChild(card);
     });
 }
 
-function renderFormulas(chapterId) {
-    const chapter = chapters.find(c => c.id === chapterId);
-    viewTitle.textContent = chapter ? chapter.title : "Formules";
-    backBtn.classList.remove('hidden');
+function renderFormulaList() {
+    const chapter = chapters.find(c => c.id === currentChapterId);
+    viewTitle.textContent = chapter.title;
+    gridContainer.innerHTML = '';
 
-    const filteredFormulas = formulas.filter(f => f.chapterId === chapterId);
-
-    if (filteredFormulas.length === 0) {
-        gridContainer.innerHTML = `
-            <div class="empty-state">
-                <i data-lucide="layers" style="width:48px;height:48px;opacity:0.3"></i>
-                <p>Pas encore de formules pour ce chapitre.</p>
-            </div>
-        `;
-        lucide.createIcons();
+    const filtered = formulas.filter(f => f.chapterId === currentChapterId);
+    if (filtered.length === 0) {
+        noResults.classList.remove('hidden');
         return;
     }
 
-    filteredFormulas.forEach(f => {
-        const card = generateFormulaCard(f);
-        gridContainer.appendChild(card);
+    filtered.forEach(f => {
+        gridContainer.appendChild(generateFormulaCard(f));
     });
 }
 
 function renderSearchResults() {
-    viewTitle.textContent = "Résultats de recherche";
-    backBtn.classList.remove('hidden');
+    viewTitle.textContent = "Recherche";
+    gridContainer.innerHTML = '';
     
     const results = formulas.filter(f => 
-        f.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
-        f.definition.toLowerCase().includes(currentSearch.toLowerCase())
+        f.title.toLowerCase().includes(currentSearch.toLowerCase())
     );
 
     if (results.length === 0) {
@@ -232,37 +219,36 @@ function renderSearchResults() {
     }
 
     results.forEach(f => {
-        const card = generateFormulaCard(f);
-        gridContainer.appendChild(card);
+        gridContainer.appendChild(generateFormulaCard(f));
     });
 }
 
 function generateFormulaCard(f) {
     const chapter = chapters.find(c => c.id === f.chapterId);
     const card = document.createElement('div');
-    card.className = `formula-card ${chapter ? chapter.subject : ""}`;
+    card.className = `formula-card`;
     
-    // Legend Pills
     const pillsHtml = f.units ? f.units.split(',').map(u => {
-        const parts = u.trim().split('(');
+        const parts = u.trim().split('[');
         const desc = parts[0].trim();
-        const unit = parts[1] ? parts[1].replace(')', '') : '';
+        const unit = parts[1] ? parts[1].split(']')[0] : '';
+        const realUnit = parts[1] ? parts[1].split('(')[1]?.replace(')', '') : '';
         return `
             <div class="unit-pill">
                 <span class="pill-sym">${desc}</span>
                 <span class="pill-arrow">↑</span>
-                <span class="pill-unit">${unit}</span>
+                <span class="pill-unit">${realUnit || unit}</span>
             </div>
         `;
     }).join('') : "";
 
     card.innerHTML = `
-        <span class="card-tag ${chapter ? chapter.subject : ""}">${chapter ? chapter.subject.toUpperCase() : ""} • ${chapter ? chapter.level : ""}</span>
+        <span class="card-tag ${chapter.subject}">${chapter.subject.toUpperCase()} • ${chapter.level}</span>
         <h3>${f.title}</h3>
         <div class="card-eqn">\\[ ${f.formula} \\]</div>
         <div class="bottom-legend-area">${pillsHtml}</div>
         <div class="card-footer">
-            <span>Voir définitions et propriétés</span>
+            <span>Définitions & Propriétés</span>
             <i data-lucide="arrow-right" style="width:16px"></i>
         </div>
     `;
@@ -270,56 +256,40 @@ function generateFormulaCard(f) {
     return card;
 }
 
-// --- MODAL LOGIC ---
-
+// --- MODAL ---
 function openModal(f) {
     const chapter = chapters.find(c => c.id === f.chapterId);
-    const modalWindow = document.querySelector('.modal-window');
-    modalWindow.className = `modal-window glass ${chapter ? chapter.subject : ""}`;
-
-    modalTitle.textContent = f.title;
-    modalTag.textContent = `${chapter ? chapter.subject.toUpperCase() : ""} • ${chapter ? chapter.level : ""}`;
-    modalTag.className = `modal-badge ${chapter ? chapter.subject : ""}`;
-    modalUnits.textContent = f.units;
-    modalDef.textContent = f.definition;
-    modalProp.textContent = f.properties;
-    mathBox.innerHTML = `\\[ ${f.formula} \\]`;
-    
-    switchTab('eqn');
+    document.getElementById('modal-title').textContent = f.title;
+    document.getElementById('modal-tag').textContent = `${chapter.subject.toUpperCase()} • ${chapter.level}`;
+    document.getElementById('modal-tag').className = `modal-badge ${chapter.subject}`;
+    document.getElementById('modal-units').textContent = f.units;
+    document.getElementById('modal-def').textContent = f.definition;
+    document.getElementById('modal-prop').textContent = f.properties;
+    document.getElementById('math-box').innerHTML = `\\[ ${f.formula} \\]`;
     modalOverlay.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
     if (window.MathJax) window.MathJax.typesetPromise();
 }
 
-function switchTab(tabId) {
-    document.querySelectorAll('.tab-trigger').forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabId));
-    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.toggle('active', panel.id === `tab-${tabId}`));
-}
+// --- EVENTS ---
+backBtn.onclick = goBack;
 
-// --- EVENT LISTENERS ---
-
-levelTabs.forEach(tab => {
+subTabs.forEach(tab => {
     tab.onclick = () => {
-        levelTabs.forEach(t => t.classList.remove('active'));
+        subTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        currentLevel = tab.dataset.level;
-        currentChapterId = null; // Return to chapter grid
-        currentSearch = '';
-        mainSearch.value = '';
+        currentSubject = tab.dataset.subject;
         render();
     };
 });
 
 mainSearch.oninput = (e) => {
     currentSearch = e.target.value;
-    if (currentSearch.length > 0) {
-        currentChapterId = null;
-    }
     render();
 };
 
-backBtn.onclick = () => {
-    currentChapterId = null;
+document.querySelector('.brand').onclick = () => {
+    currentView = 'home';
+    currentLevel = null;
     currentSearch = '';
     mainSearch.value = '';
     render();
@@ -327,12 +297,7 @@ backBtn.onclick = () => {
 
 document.querySelector('.modal-close').onclick = () => {
     modalOverlay.style.display = 'none';
-    document.body.style.overflow = 'auto';
 };
 
-document.querySelectorAll('.tab-trigger').forEach(btn => {
-    btn.onclick = () => switchTab(btn.dataset.tab);
-});
-
-// Init
+// Start
 render();

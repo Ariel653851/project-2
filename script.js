@@ -46,8 +46,8 @@ const formulas = [
     { 
         id: "v-n-vm", chapterId: "c-mol-1", title: "Volume molaire (Gaz)", 
         formula: "n = \\frac{V}{V_m}", 
-        definition: "Quantité de matière d'un gaz occupying un volume V donné.",
-        properties: "Valable uniquement pour les gaz. Vm dépend de la température.",
+        definition: "⚠️ VALABLE UNIQUEMENT POUR LES GAZ ! Permet de calculer la quantité de matière occupant un volume V.",
+        properties: "Vm ne dépend que de la température et de la pression (ex: 24 L/mol).",
         units: "n [Qté matière] (mol), V [Volume gaz] (L), Vm [Vol. molaire] (L/mol)"
     },
     { 

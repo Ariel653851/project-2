@@ -71,6 +71,22 @@ const formulas = [
         units: "n [Qté matière] (mol), V [Volume] (L), Vm [Vol. mol] (L/mol)"
     },
 
+    // --- OPTIQUE & COULEURS ---
+    { 
+        id: "opt-conj", chapterId: "p-optique-1", title: "Relation de conjugaison", 
+        formula: "\\frac{1}{\\overline{OA'}} - \\frac{1}{\\overline{OA}} = \\frac{1}{f'}", 
+        definition: "Lien entre la position de l'objet A, de l'image A' et la distance focale f'.",
+        properties: "Utiliser des valeurs algébriques (signes).",
+        units: "OA [Pos. objet] (m), OA' [Pos. image] (m), f' [Focale] (m)"
+    },
+    { 
+        id: "opt-verg", chapterId: "p-optique-1", title: "Vergence de la lentille", 
+        formula: "\\delta = \\frac{1}{f'}", 
+        definition: "Capacité d'une lentille à faire converger ou diverger la lumière.",
+        properties: "f' doit être en mètres obligatoirement.",
+        units: "δ [Vergence] (δ/dioptries), f' [Distance focale] (m)"
+    },
+
     // --- DOSAGES & TITRAGES ---
     { 
         id: "beer-lamb", chapterId: "c-dosage-1", title: "Loi de Beer-Lambert", 

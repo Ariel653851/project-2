@@ -80,7 +80,7 @@ const formulas = [
     },
     { 
         id: "tableau-av-redox", chapterId: "c-redox-1", title: "Tableau d'avancement (Modèle)", 
-        formula: "\\text{Clique pour voir le tableau complet}", 
+        formula: "\\small \\text{clique pour voire le tableau}", 
         definition: "Tableau complet : \\[ \\small \\begin{array}{|c|c|c|c|c|} \\hline \\text{Eq.} & Cu & + & 2Ag^+ & \\rightarrow & Cu^{2+} & + & 2Ag \\\\ \\hline x=0 & n_1 & & n_2 & & 0 & & 0 \\\\ \\hline x & n_1-x & & n_2-2x & & x & & 2x \\\\ \\hline x_{max} & n_1-x_{max} & & n_2-2x_{max} & & x_{max} & & 2x_{max} \\\\ \\hline \\end{array} \\]",
         properties: "Outil de suivi des quantités de matière (en mol).",
         units: "n [Moles] (mol), x [Avancement] (mol), xmax [Max] (mol)"

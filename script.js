@@ -46,9 +46,16 @@ const formulas = [
     { 
         id: "v-n-vm", chapterId: "c-mol-1", title: "Volume molaire (Gaz)", 
         formula: "n = \\frac{V}{V_m}", 
-        definition: "Quantité de matière d'un gaz occupant un volume V donné.",
+        definition: "Quantité de matière d'un gaz occupying un volume V donné.",
         properties: "Valable uniquement pour les gaz. Vm dépend de la température.",
         units: "n [Qté matière] (mol), V [Volume gaz] (L), Vm [Vol. molaire] (L/mol)"
+    },
+    { 
+        id: "d-rho-rho", chapterId: "c-mol-1", title: "Densité (d)", 
+        formula: "d = \\frac{\\rho}{\\rho_{eau}}", 
+        definition: "Rapport de la masse volumique du corps par celle de l'eau.",
+        properties: "La densité d est une grandeur sans unité.",
+        units: "d [Densité], ρ [Masse vol.] (kg/L), ρe [Masse vol. eau] (kg/L)"
     },
     { 
         id: "redox-gen", chapterId: "c-redox-1", title: "Équation d'oxydoréduction", 

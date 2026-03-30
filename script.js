@@ -70,6 +70,13 @@ const formulas = [
         properties: "Vm ≈ 24 L/mol.",
         units: "n [Qté matière] (mol), V [Volume] (L), Vm [Vol. mol] (L/mol)"
     },
+    { 
+        id: "fact-dilut", chapterId: "c-mol-1", title: "8. Facteur de dilution (F)", 
+        formula: "F = \\frac{C_{mère}}{C_{fille}} = \\frac{V_{fille}}{V_{mère}}", 
+        definition: "Nombre de fois qu'une solution a été diluée.",
+        properties: "F est toujours supérieur à 1 (sans unité).",
+        units: "Cm [Mère] (mol/L), Cf [Fille] (mol/L), Vf [Fille] (L), Vm [Mère] (L)"
+    },
 
     // --- OPTIQUE & COULEURS ---
     { 

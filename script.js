@@ -44,6 +44,13 @@ const formulas = [
         units: "Cm [Conc. masse] (g/L), m [Masse soluté] (g), V [Volume sol.] (L)"
     },
     { 
+        id: "v-n-vm", chapterId: "c-mol-1", title: "Volume molaire (Gaz)", 
+        formula: "n = \\frac{V}{V_m}", 
+        definition: "Quantité de matière d'un gaz occupant un volume V donné.",
+        properties: "Valable uniquement pour les gaz. Vm dépend de la température.",
+        units: "n [Qté matière] (mol), V [Volume gaz] (L), Vm [Vol. molaire] (L/mol)"
+    },
+    { 
         id: "redox-gen", chapterId: "c-redox-1", title: "Équation d'oxydoréduction", 
         formula: "Ox_1 + Red_2 \\rightarrow Red_1 + Ox_2", 
         definition: "Transfert d'électrons entre deux couples redox.",

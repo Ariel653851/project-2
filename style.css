@@ -346,7 +346,7 @@ header {
     margin-bottom: 0.75rem;
 }
 
-.card-tag.physique { background: #dbeafe; color: #1e40af; }
+.card-tag.physique { background: #eef2ff; color: #3730a3; }
 .card-tag.chimie { background: #d1fae5; color: #065f46; }
 
 .card-eqn {
@@ -431,7 +431,7 @@ header {
     font-weight: 700;
 }
 
-.modal-badge.physique { background: #dbeafe; color: #1e40af; }
+.modal-badge.physique { background: #eef2ff; color: #3730a3; }
 .modal-badge.chimie { background: #d1fae5; color: #065f46; }
 
 .modal-header h2 { margin-top: 0.5rem; font-size: 1.5rem; }

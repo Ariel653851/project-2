@@ -74,14 +74,14 @@ const formulas = [
     // --- OPTIQUE & COULEURS ---
     { 
         id: "opt-conj", chapterId: "p-optique-1", title: "Relation de conjugaison", 
-        formula: "\\frac{1}{\\overline{OA'}} - \\frac{1}{\\overline{OA}} = \\frac{1}{\\overline{OF'}}", 
+        formula: "\\frac{1}{OA'} - \\frac{1}{OA} = \\frac{1}{OF'}", 
         definition: "Lien entre la position de l'objet A, de l'image A' et du foyer image F'.",
-        properties: "Utiliser des valeurs algébriques (signes).",
-        units: "OA [Pos. objet] (m), OA' [Pos. image] (m), OF' [Focale] (m)"
+        properties: "Attention aux signes des distances.",
+        units: "OA [Pos. objet] (m), OA' [Pos. image] (m), OF' [Distance focale] (m)"
     },
     { 
         id: "opt-verg", chapterId: "p-optique-1", title: "Vergence de la lentille", 
-        formula: "\\delta = \\frac{1}{\\overline{OF'}}", 
+        formula: "\\delta = \\frac{1}{OF'}", 
         definition: "Capacité d'une lentille à faire converger ou diverger la lumière.",
         properties: "OF' doit être en mètres obligatoirement.",
         units: "δ [Vergence] (δ/dioptries), OF' [Distance focale] (m)"

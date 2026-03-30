@@ -298,9 +298,12 @@ function renderSearchResults() {
 function generateFormulaCard(f) {
     const chapter = chapters.find(c => c.id === f.chapterId);
     const card = document.createElement('div');
-    card.className = `formula-card`;
+    card.className = `formula-card ${chapter.subject}`;
     
-    const pillsHtml = f.units ? f.units.split(',').map(u => {
+    // Check if it's a protocol to change layout
+    const isProtocol = chapter.subject === 'protocoles';
+    
+    const pillsHtml = f.units && !isProtocol ? f.units.split(',').map(u => {
         const parts = u.trim().split('[');
         const desc = parts[0].trim();
         const unit = parts[1] ? parts[1].split(']')[0] : '';
@@ -314,13 +317,21 @@ function generateFormulaCard(f) {
         `;
     }).join('') : "";
 
+    const contentHtml = isProtocol ? `
+        <div class="card-eqn proto-icon">
+            <i data-lucide="test-tube-2" style="width:48px;height:48px;opacity:0.6"></i>
+        </div>
+    ` : `
+        <div class="card-eqn">\\[ ${f.formula} \\]</div>
+    `;
+
     card.innerHTML = `
         <span class="card-tag ${chapter.subject}">${chapter.subject.toUpperCase()} • ${chapter.level}</span>
         <h3>${f.title}</h3>
-        <div class="card-eqn">\\[ ${f.formula} \\]</div>
-        <div class="bottom-legend-area">${pillsHtml}</div>
+        ${contentHtml}
+        <div class="bottom-legend-area">${isProtocol ? "" : pillsHtml}</div>
         <div class="card-footer">
-            <span>Définitions & Propriétés</span>
+            <span>${isProtocol ? "Voir le protocole" : "Définitions & Propriétés"}</span>
             <i data-lucide="arrow-right" style="width:16px"></i>
         </div>
     `;
@@ -331,6 +342,11 @@ function generateFormulaCard(f) {
 // --- MODAL ---
 function openModal(f) {
     const chapter = chapters.find(c => c.id === f.chapterId);
+    const isProtocol = chapter.subject === 'protocoles';
+    
+    // Toggle tabs visibility
+    document.querySelector('.modal-tabs').style.display = isProtocol ? 'none' : 'flex';
+    document.getElementById('tab-eqn').style.display = isProtocol ? 'none' : 'block';
     
     // Update contents
     document.getElementById('modal-title').textContent = f.title;
@@ -341,8 +357,13 @@ function openModal(f) {
     document.getElementById('modal-prop').textContent = f.properties;
     document.getElementById('math-box').innerHTML = `\\[ ${f.formula} \\]`;
     
-    // Reset to first tab
-    switchTab('eqn');
+    // Special: if protocol, show content in its own way
+    if (isProtocol) {
+        document.getElementById('tab-def').classList.add('active');
+    } else {
+        document.getElementById('tab-def').classList.remove('active');
+        switchTab('eqn');
+    }
     
     // Show modal
     modalOverlay.style.display = 'flex';

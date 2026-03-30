@@ -40,6 +40,20 @@ const formulas = [
         units: ""
     },
     { 
+        id: "proto-dissol", chapterId: "proto-chimie-1", title: "Protocole de Dissolution", 
+        formula: "", 
+        definition: "BUT : Dissoudre un soluté solide pour préparer une solution.\n\n1. Placer la coupelle vide sur la balance et tarer.\n2. Peser exactement la masse m de solide à l'aide d'une spatule.\n3. Introduire le solide dans la fiole jaugée avec un entonnoir.\n4. Rincer la coupelle et l'entonnoir à l'eau distillée (verser dans la fiole).\n5. Remplir la fiole aux 2/3 avec de l'eau distillée.\n6. Boucher et agiter jusqu'à dissolution complète.\n7. Compléter jusqu'au trait de jauge avec de l'eau distillée.\n8. Boucher et agiter pour homogénéiser.",
+        properties: "",
+        units: ""
+    },
+    { 
+        id: "proto-dilut", chapterId: "proto-chimie-1", title: "Protocole de Dilution", 
+        formula: "", 
+        definition: "BUT : Diminuer la concentration d'une solution.\n\n1. Verser un volume de solution mère dans un bécher propre.\n2. Prélever le volume V_mère à l'aide d'une pipette jaugée munie d'une propipette.\n3. Verser le prélèvement dans une fiole jaugée (volume V_fille).\n4. Compléter la fiole avec de l'eau distillée jusqu'au trait de jauge.\n5. Boucher et agiter pour homogénéiser.\n\nNote : F = V_fille / V_mère = C_mère / C_fille",
+        properties: "",
+        units: ""
+    },
+    { 
         id: "n-cv", chapterId: "c-mol-1", title: "Quantité de matière (Solution)", 
         formula: "n = C \\times V", 
         definition: "Calcul des moles dans un volume V de solution de concentration molaire C.",

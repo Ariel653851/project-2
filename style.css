@@ -180,7 +180,14 @@ header {
 
 .hero-card i {
     width: 48px; height: 48px;
-    color: var(--primary);
+}
+
+.hero-card [data-lucide="book"] {
+    color: #1e293b; /* Scholarly Navy Blue */
+}
+
+.hero-card.secondary [data-lucide="graduation-cap"] {
+    color: #000000; /* Intense Success Black */
 }
 
 .hero-card span {

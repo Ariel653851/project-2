@@ -184,10 +184,12 @@ header {
 
 .hero-card [data-lucide="book"] {
     color: #1e293b; /* Scholarly Navy Blue */
+    fill: #1e293b;  /* Filling the inside */
 }
 
 .hero-card.secondary [data-lucide="graduation-cap"] {
     color: #000000; /* Intense Success Black */
+    fill: #000000;  /* Filling the inside */
 }
 
 .hero-card span {

@@ -95,13 +95,6 @@ const formulas = [
         properties: "Ox capte e-, Red cède e-.",
         units: "Ox [Oxydant], Red [Réducteur]"
     },
-    { 
-        id: "tab-av-model", chapterId: "c-redox-1", title: "Modèle : Tableau d'avancement", 
-        formula: "\\text{Voir le modèle de tableau}", 
-        definition: "Structure type pour suivre l'évolution des quantités de matière :\n\n- État initial (x=0) : n1, n2...\n- État intermédiaire (x) : n1-ax, n2-bx...\n- État final (xmax) : n1-axmax, n2-bxmax...",
-        properties: "Le réactif limitant est celui qui s'annule en premier.",
-        units: "n [mol], x [mol]"
-    },
 
     // --- ÉNERGIE MÉCANIQUE ---
     { 

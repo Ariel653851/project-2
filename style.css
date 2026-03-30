@@ -356,6 +356,8 @@ header {
     align-items: center;
     font-size: 1.5rem;
     padding: 1.5rem 0;
+    overflow-x: auto; /* Permet de glisser si c'est trop large */
+    width: 100%;
 }
 
 .bottom-legend-area {

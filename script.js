@@ -58,6 +58,20 @@ const formulas = [
         units: "d [Densité], ρ [Masse vol.] (kg/L), ρe [Masse vol. eau] (kg/L)"
     },
     { 
+        id: "rho-m-v", chapterId: "c-mol-1", title: "Masse volumique (ρ)", 
+        formula: "\\rho = \\frac{m}{V}", 
+        definition: "Masse de l'unité de volume d'un corps donné.",
+        properties: "Permet de relier masse et volume d'un corps pur.",
+        units: "ρ [Masse vol.] (g/L), m [Masse] (g), V [Volume] (L)"
+    },
+    { 
+        id: "c-cm-m", chapterId: "c-mol-1", title: "Lien C et Cm", 
+        formula: "C = \\frac{C_m}{M}", 
+        definition: "Relation permettant de convertir une concentration massique en concentration molaire.",
+        properties: "Cm est la concentration en masse (g/L), M est la masse molaire.",
+        units: "C [Conc. molaire] (mol/L), Cm [Conc. masse] (g/L), M [Masse mol.] (g/mol)"
+    },
+    { 
         id: "redox-gen", chapterId: "c-redox-1", title: "Équation d'oxydoréduction", 
         formula: "Ox_1 + Red_2 \\rightarrow Red_1 + Ox_2", 
         definition: "Transfert d'électrons entre deux couples redox.",

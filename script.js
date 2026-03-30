@@ -33,6 +33,48 @@ const formulas = [
         units: "n [Qté matière] (mol), m [Masse] (g), M [Masse molaire] (g/mol)"
     },
     { 
+        id: "d-rho-rho", chapterId: "c-mol-1", title: "Densité (d)", 
+        formula: "d = \\frac{\\rho}{\\rho_{eau}}", 
+        definition: "Rapport de la masse volumique du corps par celle de l'eau.",
+        properties: "Grandeur sans unité.",
+        units: "d [Densité], ρ [Masse vol.] (kg/L)"
+    },
+    { 
+        id: "rho-m-v", chapterId: "c-mol-1", title: "Masse volumique (ρ)", 
+        formula: "\\rho = \\frac{m}{V}", 
+        definition: "Masse de l'unité de volume d'un corps donné.",
+        properties: "Relie masse et volume d'un corps pur.",
+        units: "ρ [Masse vol.] (g/L), m [Masse] (g), V [Volume] (L)"
+    },
+    { 
+        id: "c-cm-m", chapterId: "c-mol-1", title: "Lien C et Cm", 
+        formula: "C = \\frac{C_m}{M}", 
+        definition: "Relation permettant de convertir une concentration massique en concentration molaire.",
+        properties: "M est la masse molaire du soluté.",
+        units: "C (mol/L), Cm (g/L), M (g/mol)"
+    },
+    { 
+        id: "n-cv", chapterId: "c-mol-1", title: "Quantité de matière (Solution)", 
+        formula: "n = C \\times V", 
+        definition: "Calcul des moles dans un volume V de solution de concentration molaire C.",
+        properties: "Valable pour les solutés dissous.",
+        units: "n [Qté matière] (mol), C [Conc. molaire] (mol/L), V [Volume] (L)"
+    },
+    { 
+        id: "beer-lamb", chapterId: "c-dosage-1", title: "Loi de Beer-Lambert", 
+        formula: "A = \\epsilon \\cdot l \\cdot C", 
+        definition: "Lien entre l'absorbance d'une solution colorée et sa concentration.",
+        properties: "A est sans unité, ε est le coef. d'extinction.",
+        units: "A [Absorbance], C [Concentration] (mol/L)"
+    },
+    { 
+        id: "titrage-equiv", chapterId: "c-dosage-1", title: "Relation à l'Équivalence", 
+        formula: "\\frac{C_A \\cdot V_A}{a} = \\frac{C_B \\cdot V_{eq}}{b}", 
+        definition: "A l'équivalence, les réactifs sont introduits dans les proportions stoechiométriques.",
+        properties: "a et b sont les coefficients stoechiométriques.",
+        units: "Ca, Cb [Conc.] (mol/L), Va, Veq [Volume] (L)"
+    },
+    { 
         id: "pe-etalon-1", chapterId: "proto-chimie-1", title: "Dosage par étalonnage (Spectrophotométrie)", 
         formula: "", 
         definition: "• PRÉLIMINAIRE : Réglage du spectrophotomètre (Le Blanc).\n• ÉTAPE 0 : Déterminer le spectre d'absorption (λmax).\n• ÉTAPE 1 : À partir d'une solution connue, on prépare par dilutions successives des solutions étalons.\n• ÉTAPE 2 : Préparer des solutions étalons à concentrations connues et croissantes.\n• ÉTAPE 3 : Refaire le blanc à λmax.\n• ÉTAPE 4 : Mesurer l'absorbance de chaque solution et noter les valeurs.\n• ÉTAPE 5 : Tracer la courbe d'étalonnage A=f(c).\n• ÉTAPE 6 : Mesurer l'absorbance de la solution inconnue et déduire sa concentration.\n\nLoi de Beer-Lambert : A = k × C (Droite passant par l'origine).",
@@ -54,13 +96,6 @@ const formulas = [
         units: ""
     },
     { 
-        id: "n-cv", chapterId: "c-mol-1", title: "Quantité de matière (Solution)", 
-        formula: "n = C \\times V", 
-        definition: "Calcul des moles dans un volume V de solution de concentration molaire C.",
-        properties: "Valable pour les solutés dissous.",
-        units: "n [Qté matière] (mol), C [Conc. molaire] (mol/L), V [Volume] (L)"
-    },
-    { 
         id: "cm-m-v", chapterId: "c-mol-1", title: "Concentration en masse", 
         formula: "C_m = \\frac{m}{V}", 
         definition: "Rapport de la masse du soluté par le volume total de la solution.",
@@ -73,27 +108,6 @@ const formulas = [
         definition: "⚠️ VALABLE UNIQUEMENT POUR LES GAZ !",
         properties: "Vm ≈ 24 L/mol.",
         units: "n [Qté matière] (mol), V [Volume] (L), Vm [Vol. mol] (L/mol)"
-    },
-    { 
-        id: "d-rho-rho", chapterId: "c-mol-1", title: "Densité (d)", 
-        formula: "d = \\frac{\\rho}{\\rho_{eau}}", 
-        definition: "Rapport de la masse volumique du corps par celle de l'eau.",
-        properties: "Grandeur sans unité.",
-        units: "d [Densité], ρ [Masse vol.] (kg/L)"
-    },
-    { 
-        id: "rho-m-v", chapterId: "c-mol-1", title: "Masse volumique (ρ)", 
-        formula: "\\rho = \\frac{m}{V}", 
-        definition: "Masse de l'unité de volume d'un corps donné.",
-        properties: "Relie masse et volume d'un corps pur.",
-        units: "ρ [Masse vol.] (g/L), m [Masse] (g), V [Volume] (L)"
-    },
-    { 
-        id: "c-cm-m", chapterId: "c-mol-1", title: "Lien C et Cm", 
-        formula: "C = \\frac{C_m}{M}", 
-        definition: "Relation permettant de convertir une concentration massique en concentration molaire.",
-        properties: "M est la masse molaire du soluté.",
-        units: "C (mol/L), Cm (g/L), M (g/mol)"
     },
     { 
         id: "redox-gen", chapterId: "c-redox-1", title: "Équation d'oxydoréduction", 

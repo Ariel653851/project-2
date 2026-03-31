@@ -375,8 +375,9 @@ header {
 
 /* Cas spécial pour la carte "Caractéristiques de l'image" */
 .formula-card[data-id="opt-caract"] .card-eqn {
-    font-size: 0.85rem; 
-    line-height: 1.4;
+    font-size: 0.72rem; 
+    line-height: 1.25;
+    padding: 0.5rem 0.2rem;
 }
 
 .bottom-legend-area {

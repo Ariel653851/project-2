@@ -159,8 +159,7 @@ const formulas = [
         id: "proto-dilut", chapterId: "proto-chimie-1", title: "Protocole : Dilution", 
         formula: "", 
         definition: "BUT : Préparer une solution moins concentrée.\n\n1. Verser la solution mère dans un bécher.\n2. Prélever V_mère avec une pipette jaugée.\n3. Verser dans la fiole jaugée (V_fille).\n4. Compléter avec de l'eau distillée (trait de jauge).\n5. Boucher et agiter pour homogénéiser.\n\nF = V_fille / V_mère = C_mère / C_fille",
-        properties: "", units: "",
-        image: "dilution.png"
+        properties: "", units: ""
     }
 ];
 
@@ -259,16 +258,6 @@ function openModal(f) {
     document.getElementById('modal-def').textContent = f.definition;
     document.getElementById('modal-prop').textContent = f.properties;
     document.getElementById('math-box').innerHTML = `\\[ ${f.formula} \\]`;
-    
-    // Manage Protocol Image
-    const imgWrap = document.getElementById('modal-img-wrap');
-    if (f.image) {
-        document.getElementById('modal-image').src = f.image;
-        imgWrap.classList.remove('hidden');
-    } else {
-        imgWrap.classList.add('hidden');
-    }
-
     document.getElementById('tab-def').classList.toggle('active', isProto);
     document.getElementById('tab-def').style.display = isProto ? 'block' : 'none';
     if (!isProto) switchTab('eqn');

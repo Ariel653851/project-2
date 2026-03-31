@@ -160,6 +160,12 @@ const formulas = [
         formula: "", 
         definition: "BUT : Préparer une solution moins concentrée.\n\n1. Verser la solution mère dans un bécher.\n2. Prélever V_mère avec une pipette jaugée.\n3. Verser dans la fiole jaugée (V_fille).\n4. Compléter avec de l'eau distillée (trait de jauge).\n5. Boucher et agiter pour homogénéiser.\n\nF = V_fille / V_mère = C_mère / C_fille",
         properties: "", units: ""
+    },
+    { 
+        id: "proto-titrage", chapterId: "proto-chimie-1", title: "Protocole : Titrage colorimétrique", 
+        formula: "", 
+        definition: "1. On ajoute petit à petit la solution titrante dans la solution titrée.\n2. Dès la première goutte versée, la réaction chimique se produit immédiatement.\n3. Tant que l'équivalence n'est pas atteinte, le réactif titrant est consommé immédiatement.\n4. À l'équivalence, le réactif titré est lui aussi totalement consommé : on observe un changement de couleur brusque.\n\nVolume à l'équivalence : Veq",
+        properties: "", units: ""
     }
 ];
 

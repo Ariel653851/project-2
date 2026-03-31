@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.2">
+    <link rel="stylesheet" href="style.css?v=3.1">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -131,32 +131,9 @@
         </footer>
         <button id="copy-btn" onclick="copyLink()">📋 Copier le lien</button>
         <div id="toast"></div>
-
-        <!-- AI ASSISTANT FAB -->
-        <button id="ai-fab" onclick="toggleAIChat()" title="Assistant Maïmo">
-            <i data-lucide="bot"></i>
-        </button>
-
-        <!-- AI CHAT MODAL (Hidden by default) -->
-        <div id="ai-chat-box" class="hidden">
-            <div class="ai-header">
-                <div class="ai-title">
-                    <i data-lucide="sparkles"></i>
-                    <span>Assistant Maïmo</span>
-                </div>
-                <button onclick="toggleAIChat()"><i data-lucide="x"></i></button>
-            </div>
-            <div id="ai-messages">
-                <div class="ai-msg bot">Salut ! Je suis ton assistant de labo. Que cherches-tu aujourd'hui ? 🔬</div>
-            </div>
-            <div class="ai-input-area">
-                <input type="text" id="ai-input" placeholder="Ex: 'Comment faire une dilution ?'" onkeypress="if(event.key === 'Enter') handleAISent()">
-                <button onclick="handleAISent()"><i data-lucide="send"></i></button>
-            </div>
-        </div>
     </div>
 
-    <script src="script.js?v=3.2"></script>
+    <script src="script.js?v=3.1"></script>
     <script>
       lucide.createIcons();
       function copyLink() {

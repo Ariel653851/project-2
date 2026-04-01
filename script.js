@@ -186,11 +186,11 @@ const formulas = [
         units: "λ [Longueur d'onde] (m), v [Célérité] (m/s), f [Fréquence] (Hz)"
     },
     { 
-        id: "onde-retard", chapterId: "p-ondes-1", title: "Retard de l'onde (τ)", 
+        id: "onde-retard", chapterId: "p-ondes-1", title: "Retard de l'onde (\\(\\tau\\))", 
         formula: "\\tau = \\frac{MM'}{v}", 
         definition: "Le retard (noté avec la lettre grecque tau « τ », à ne pas confondre avec la période T) est la durée que met une onde pour parcourir la distance séparant deux points M et M'.",
         properties: "L'onde au point M' reproduit le mouvement du point M avec un décalage temporel égal au retard τ.",
-        units: "τ [Retard] (s), MM' [Distance M à M'] (m), v [Célérité] (m/s)"
+        units: "\\tau [Retard] (s), MM' [Distance M à M'] (m), v [Célérité] (m/s)"
     },
 
     // --- PROTOCOLES ---

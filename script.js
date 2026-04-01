@@ -185,6 +185,13 @@ const formulas = [
         properties: "Relation utilisant la fréquence f. v (ou c) est la célérité de l'onde.",
         units: "λ [Longueur d'onde] (m), v [Célérité] (m/s), f [Fréquence] (Hz)"
     },
+    { 
+        id: "onde-retard", chapterId: "p-ondes-1", title: "Retard de l'onde (τ)", 
+        formula: "\\tau = \\frac{d}{v}", 
+        definition: "Le retard τ (tau) est la durée que met une onde mécanique pour parcourir la distance d entre deux points de propagation (par exemple M et M').",
+        properties: "L'onde au point d'arrivée reproduit le mouvement du point de départ avec un décalage temporel τ.",
+        units: "τ [Retard] (s), d [Distance] (m), v [Célérité] (m/s)"
+    },
 
     // --- PROTOCOLES ---
     { 

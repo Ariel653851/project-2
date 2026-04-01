@@ -178,17 +178,17 @@ header {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.hero-card i {
-    width: 64px; height: 64px; 
-}
-
+.hero-card svg,
 .hero-card .hero-emoji {
-    font-size: 28px; 
-    height: 64px; /* Hauteur strictement fixée sur celle de l'icône */
+    width: 64px; height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
+}
+
+.hero-card .hero-emoji {
+    font-size: 36px; 
 }
 
 .hero-card [data-lucide="graduation-cap"] {

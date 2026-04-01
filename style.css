@@ -182,9 +182,10 @@ header {
     width: 48px; height: 48px;
 }
 
-.hero-card [data-lucide="book-open"] {
-    color: #5b21b6; /* Violet profond (Mélange bleu-rouge) */
-    fill: #5b21b6;  
+.hero-card .hero-emoji {
+    font-size: 48px;
+    line-height: 1;
+    margin: 0;
 }
 
 .hero-card [data-lucide="graduation-cap"] {

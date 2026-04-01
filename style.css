@@ -179,12 +179,12 @@ header {
 }
 
 .hero-card i {
-    width: 56px; height: 56px;
+    width: 64px; height: 64px; /* Agrandit légèrement le chapeau */
 }
 
 .hero-card .hero-emoji {
-    font-size: 28px; /* Réduction drastique pour voir la différence nette */
-    line-height: 56px; 
+    font-size: 28px; 
+    line-height: 64px; /* Garde le centrage vertical par rapport au nouveau chapeau */
     margin: 0;
 }
 

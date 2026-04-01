@@ -187,6 +187,11 @@ header {
     margin: 0;
 }
 
+.hero-card svg {
+    padding: 3px; /* Réduit très légèrement la taille visuelle (58px utiles) sans casser l'alignement de 64px */
+    box-sizing: border-box;
+}
+
 .hero-card .hero-emoji {
     font-size: 36px; 
 }

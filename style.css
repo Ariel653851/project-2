@@ -183,8 +183,8 @@ header {
 }
 
 .hero-card .hero-emoji {
-    font-size: 40px;
-    line-height: 48px; /* Force la même hauteur que le i (48px) pour s'équilibrer */
+    font-size: 32px; /* Réduction franche de la taille de l'émoji */
+    line-height: 48px; 
     margin: 0;
 }
 

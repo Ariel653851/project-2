@@ -414,7 +414,13 @@ function createCard(f) {
     div.innerHTML = `
         <span class="card-tag ${chapter.subject}">${chapter.subject.toUpperCase()}</span>
         <h3>${f.title}</h3>
-        <div class="card-eqn">${isProto ? '<i data-lucide="test-tube-2" style="width:40px;opacity:0.3"></i>' : `\\[ ${f.formula} \\]`}</div>
+        <div class="card-eqn">
+            ${isProto ? `
+                <div class="proto-icon-wrapper">
+                    <i data-lucide="beaker" class="proto-svg"></i>
+                </div>
+            ` : `\\[ ${f.formula} \\]`}
+        </div>
         <div class="bottom-legend-area">${isProto ? "" : pillsHtml}</div>
         <div class="card-footer"><span>${isProto ? 'Voir le protocole' : 'Voir détails'}</span><i data-lucide="arrow-right"></i></div>
     `;

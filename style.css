@@ -407,6 +407,36 @@ header {
 .card-tag.chimie { background: #d1fae5; color: #065f46; }
 .card-tag.protocoles { background: #fef3c7; color: #92400e; }
 
+/* PROTOCOL CARDS EXTRA STYLE */
+.proto-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0.5rem auto;
+    transition: all 0.3s;
+    border: 1px solid var(--border);
+}
+
+.formula-card:hover .proto-icon-wrapper {
+    background: var(--primary-soft);
+    border-color: var(--primary);
+    transform: scale(1.1);
+}
+
+.proto-svg {
+    width: 30px;
+    height: 30px;
+    color: var(--primary);
+}
+
+.formula-card.protocoles {
+    border-left: 4px solid #f59e0b; /* Couleur orange protocoles */
+}
+
 .card-eqn {
     flex: 1;
     display: flex;

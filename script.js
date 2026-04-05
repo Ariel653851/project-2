@@ -134,7 +134,7 @@ const formulas = [
     },
     { 
         id: "redox-demi", chapterId: "c-redox-1", title: "Demi-équation (Exemple)", 
-        formula: "MnO_4^- + 8H^+ + 5e^- = Mn^{2+} + 4H_2O \\\\ \\downarrow \\\\ \\text{Forme simplifiée : } MnO_4^- + 5e^- \\rightarrow Mn^{2+}", 
+        formula: "\\begin{array}{l} \\text{Demi-équation complète :} \\\\ MnO_4^- + 8H^+ + 5e^- = Mn^{2+} + 4H_2O \\\\ \\downarrow \\\\ \\text{Forme simplifiée (seulement redox) :} \\\\ MnO_4^- + 5e^- \\rightarrow Mn^{2+} \\end{array}", 
         definition: "La demi-équation montre le gain ou la perte d'électrons pour un seul couple.",
         properties: "L'oxydant est toujours du côté des électrons (e-).",
         units: "MnO4- [Oxydant], Mn2+ [Réducteur]"
@@ -229,22 +229,54 @@ const formulas = [
 
 // --- APP LOGIC (Navigation, Search, Modals) ---
 
-let currentLevel = null;
+// --- APP LOGIC (Navigation, Search, Modals) ---
+
+let currentLevel = '1ere'; // Default
 let currentSubject = 'all';
 let currentChapterId = null;
 let currentSearch = '';
 let currentView = 'home';
+let currentNav = 'formulas'; // NEW: 'formulas' or 'definitions'
 
 function render() {
-    document.getElementById('home-view').classList.toggle('hidden', currentView !== 'home' && currentSearch.length === 0);
-    document.getElementById('app-view').classList.toggle('hidden', currentView === 'home' && currentSearch.length === 0);
-    document.getElementById('subject-tabs').classList.toggle('hidden', currentView !== 'chapters');
-    document.getElementById('back-btn').classList.toggle('hidden', currentView === 'home');
-    document.getElementById('no-results').classList.add('hidden');
+    const homeView = document.getElementById('home-view');
+    const appView = document.getElementById('app-view');
+    const subjTabs = document.getElementById('subject-tabs-container');
+    const chapTabs = document.getElementById('chapter-nav-tabs');
+    const backBtn = document.getElementById('back-btn');
+    const viewTitle = document.getElementById('view-title');
+    const levelLabel = document.getElementById('level-label');
 
-    if (currentSearch.length > 0) { renderSearch(); }
-    else if (currentView === 'chapters') { renderChapters(); }
-    else if (currentView === 'formulas') { renderFormulas(); }
+    // Reset visibility
+    homeView.classList.add('hidden');
+    appView.classList.add('hidden');
+    subjTabs.classList.add('hidden');
+    chapTabs.classList.add('hidden');
+    backBtn.classList.add('hidden');
+
+    if (currentSearch.length > 0) {
+        appView.classList.remove('hidden');
+        backBtn.classList.remove('hidden');
+        viewTitle.textContent = "Résultats";
+        renderSearch();
+    } else if (currentView === 'home') {
+        homeView.classList.remove('hidden');
+    } else if (currentView === 'chapters') {
+        appView.classList.remove('hidden');
+        subjTabs.classList.remove('hidden');
+        backBtn.classList.remove('hidden');
+        viewTitle.textContent = "Chapitres";
+        levelLabel.textContent = currentLevel === '1ere' ? 'Première' : 'Seconde';
+        renderChapters();
+    } else if (currentView === 'formulas') {
+        appView.classList.remove('hidden');
+        chapTabs.classList.remove('hidden');
+        backBtn.classList.remove('hidden');
+        const chapter = chapters.find(c => c.id === currentChapterId);
+        viewTitle.textContent = chapter ? chapter.title : "Détails";
+        if (currentNav === 'formulas') renderFormulas();
+        else renderDefinitions();
+    }
 
     if (window.MathJax) window.MathJax.typesetPromise();
     lucide.createIcons();
@@ -259,7 +291,13 @@ function renderChapters() {
         const div = document.createElement('div');
         div.className = 'chapter-card';
         div.innerHTML = `<div class="subj-dot ${c.subject}"></div><div class="card-info">${c.subject.toUpperCase()}</div><h3>${c.title}</h3>`;
-        div.onclick = () => { currentChapterId = c.id; currentView = 'formulas'; render(); };
+        div.onclick = () => { 
+            currentChapterId = c.id; 
+            currentView = 'formulas'; 
+            currentNav = 'formulas'; // Reset to formulas when entering
+            updateNavTabs();
+            render(); 
+        };
         grid.appendChild(div);
     });
 }
@@ -270,12 +308,50 @@ function renderFormulas() {
     formulas.filter(f => f.chapterId === currentChapterId).forEach(f => grid.appendChild(createCard(f)));
 }
 
+function renderDefinitions() {
+    const grid = document.getElementById('grid-container');
+    grid.innerHTML = '';
+    
+    // Custom definitions based on chapter
+    let defs = [];
+    if (currentChapterId === 'c-mol-1') {
+        defs = [
+            { t: "La Mole", d: "Unité de quantité de matière (symbole : mol) contenant exactement 6,022 x 10^23 entités élémentaires." },
+            { t: "Masse Molaire (M)", d: "Masse d'une mole d'une substance donnée. Elle s'exprime en g/mol." },
+            { t: "Concentration Molaire (C)", d: "Quantité de soluté (en mol) présente dans un litre de solution." },
+            { t: "Dilution", d: "Opération consistant à ajouter du solvant à une solution pour en diminuer la concentration." }
+        ];
+    } else {
+        defs = [{ t: "En attente", d: "Les définitions pour ce chapitre arrivent bientôt ! Ariel les ajoutera prochainement." }];
+    }
+
+    defs.forEach(def => {
+        const div = document.createElement('div');
+        div.className = 'formula-card definitions-style';
+        div.innerHTML = `
+            <span class="card-tag chemistry">DÉFINITION</span>
+            <h3>${def.t}</h3>
+            <p style="margin-top:1rem; line-height:1.6; color:var(--text-muted);">${def.d}</p>
+        `;
+        grid.appendChild(div);
+    });
+}
+
 function renderSearch() {
     const grid = document.getElementById('grid-container');
     grid.innerHTML = '';
     const results = formulas.filter(f => f.title.toLowerCase().includes(currentSearch.toLowerCase()));
-    if (results.length === 0) { document.getElementById('no-results').classList.remove('hidden'); return; }
+    if (results.length === 0) { 
+        document.getElementById('no-results').classList.remove('hidden'); 
+        return; 
+    }
     results.forEach(f => grid.appendChild(createCard(f)));
+}
+
+function updateNavTabs() {
+    document.querySelectorAll('.nav-tab').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.nav === currentNav);
+    });
 }
 
 function createCard(f) {
@@ -285,19 +361,12 @@ function createCard(f) {
     div.className = `formula-card ${chapter.subject}`;
     div.dataset.id = f.id;
     
-    // Recovery of pills logic (V1.5 Robust Parser)
     const pillsHtml = f.units && !isProto ? f.units.split(',').map(u => {
         const txt = u.trim();
         const sym = txt.includes('[') ? txt.split('[')[0].trim() : (txt.includes('(') ? txt.split('(')[0].trim() : txt);
         const unit = txt.includes('(') ? txt.split('(')[1].split(')')[0] : '';
         if (!sym && !unit) return '';
-        return `
-            <div class="unit-pill">
-                <span class="pill-sym">${sym}</span>
-                <span class="pill-arrow">↑</span>
-                <span class="pill-unit">${unit}</span>
-            </div>
-        `;
+        return `<div class="unit-pill"><span class="pill-sym">${sym}</span><span class="pill-arrow">↑</span><span class="pill-unit">${unit}</span></div>`;
     }).join('') : "";
 
     div.innerHTML = `
@@ -305,7 +374,7 @@ function createCard(f) {
         <h3>${f.title}</h3>
         <div class="card-eqn">${isProto ? '<i data-lucide="test-tube-2" style="width:40px;opacity:0.3"></i>' : `\\[ ${f.formula} \\]`}</div>
         <div class="bottom-legend-area">${isProto ? "" : pillsHtml}</div>
-        <div class="card-footer"><span>${isProto ? 'Voir le protocole' : 'Voir définitions'}</span><i data-lucide="arrow-right"></i></div>
+        <div class="card-footer"><span>${isProto ? 'Voir le protocole' : 'Voir détails'}</span><i data-lucide="arrow-right"></i></div>
     `;
     div.onclick = () => openModal(f);
     return div;
@@ -317,8 +386,6 @@ function openModal(f) {
 
     document.querySelector('.modal-tabs').style.display = isProto ? 'none' : 'flex';
     document.getElementById('tab-eqn').style.display = isProto ? 'none' : 'block';
-    
-    // Check Definition tab visibility (only hidden for Protocols)
     document.querySelector('.tab-trigger[data-tab="def"]').style.display = isProto ? 'none' : 'block';
 
     document.getElementById('modal-title').textContent = f.title;
@@ -327,10 +394,14 @@ function openModal(f) {
     document.getElementById('modal-units').textContent = f.units;
     document.getElementById('modal-def').textContent = f.definition;
     document.getElementById('modal-prop').textContent = f.properties;
-    document.getElementById('math-box').innerHTML = `\\[ ${f.formula} \\]`;
-    document.getElementById('tab-def').classList.toggle('active', isProto);
-    document.getElementById('tab-def').style.display = isProto ? 'block' : 'none';
-    if (!isProto) switchTab('eqn');
+    document.getElementById('math-box').innerHTML = f.formula ? `\\[ ${f.formula} \\]` : "";
+    
+    if (isProto) {
+        switchTab('def');
+    } else {
+        switchTab('eqn');
+    }
+    
     document.getElementById('modal-overlay').style.display = 'flex';
     document.body.style.overflow = 'hidden';
     if (window.MathJax) window.MathJax.typesetPromise();
@@ -339,15 +410,48 @@ function openModal(f) {
 
 function switchTab(id) {
     document.querySelectorAll('.tab-trigger').forEach(b => b.classList.toggle('active', b.dataset.tab === id));
-    document.querySelectorAll('.tab-panel').forEach(p => { p.classList.toggle('active', p.id === `tab-${id}`); p.style.display = (p.id === `tab-${id}` ? 'block' : 'none'); });
+    document.querySelectorAll('.tab-panel').forEach(p => { 
+        const isActive = p.id === `tab-${id}`;
+        p.classList.toggle('active', isActive); 
+        p.style.display = isActive ? 'block' : 'none'; 
+    });
 }
 
 function selectLevel(lvl) { currentLevel = lvl; currentView = 'chapters'; render(); }
-function goBack() { if (currentSearch) { currentSearch = ''; document.getElementById('main-search').value = ''; } else if (currentView === 'formulas') { currentView = 'chapters'; } else { currentView = 'home'; } render(); }
+function goBack() { 
+    if (currentSearch) { 
+        currentSearch = ''; 
+        document.getElementById('main-search').value = ''; 
+    } else if (currentView === 'formulas') { 
+        currentView = 'chapters'; 
+    } else { 
+        currentView = 'home'; 
+    } 
+    render(); 
+}
 
+// Event Listeners
 document.getElementById('back-btn').onclick = goBack;
-document.querySelectorAll('.sub-tab').forEach(t => t.onclick = () => { document.querySelectorAll('.sub-tab').forEach(x => x.classList.remove('active')); t.classList.add('active'); currentSubject = t.dataset.subject; render(); });
+document.querySelectorAll('.sub-tab').forEach(t => t.onclick = () => { 
+    document.querySelectorAll('.sub-tab').forEach(x => x.classList.remove('active')); 
+    t.classList.add('active'); 
+    currentSubject = t.dataset.subject; 
+    render(); 
+});
 document.querySelectorAll('.tab-trigger').forEach(t => t.onclick = () => switchTab(t.dataset.tab));
+document.querySelectorAll('.nav-tab').forEach(t => t.onclick = () => {
+    currentNav = t.dataset.nav;
+    updateNavTabs();
+    render();
+});
+document.getElementById('main-search').oninput = (e) => { currentSearch = e.target.value; render(); };
+document.querySelector('.modal-close').onclick = () => {
+    document.getElementById('modal-overlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+};
+
+// Start
+render();
 document.getElementById('main-search').oninput = (e) => { currentSearch = e.target.value; render(); };
 document.querySelector('.modal-close').onclick = () => { document.getElementById('modal-overlay').style.display = 'none'; document.body.style.overflow = 'auto'; };
 window.onclick = (e) => { if (e.target === document.getElementById('modal-overlay')) { document.getElementById('modal-overlay').style.display = 'none'; document.body.style.overflow = 'auto'; } };

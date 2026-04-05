@@ -263,6 +263,43 @@ header {
     border-color: var(--text-muted);
 }
 
+/* CHAPTER NAVIGATION TABS */
+.chapter-nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    background: var(--bg);
+    padding: 0.4rem;
+    border-radius: 50px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--border);
+}
+
+.nav-tab {
+    padding: 0.6rem 2rem;
+    border-radius: 50px;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-muted);
+}
+
+.nav-tab.active {
+    background: white;
+    color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.nav-tab:hover:not(.active) {
+    color: var(--text);
+}
+
 /* VIEW HEADER */
 .view-header {
     display: flex;

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=6.7">
+    <link rel="stylesheet" href="style.css?v=6.9">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -73,11 +73,19 @@
                 </div>
 
                 <!-- SUBJECT TABS (Visible only in Chapters view) -->
-                <div id="subject-tabs" class="subject-tabs">
-                    <button class="sub-tab active" data-subject="all">Tous</button>
-                    <button class="sub-tab" data-subject="physique">Physique</button>
-                    <button class="sub-tab" data-subject="chimie">Chimie</button>
-                    <button class="sub-tab" data-subject="protocoles">Protocoles</button>
+                <div id="subject-tabs-container">
+                    <div id="subject-tabs" class="subject-tabs">
+                        <button class="sub-tab active" data-subject="all">Tous</button>
+                        <button class="sub-tab" data-subject="physique">Physique</button>
+                        <button class="sub-tab" data-subject="chimie">Chimie</button>
+                        <button class="sub-tab" data-subject="protocoles">Protocoles</button>
+                    </div>
+                </div>
+
+                <!-- NEW: CHAPTER VIEW TABS (Visible only when inside a chapter) -->
+                <div id="chapter-nav-tabs" class="chapter-nav-tabs hidden">
+                    <button class="nav-tab active" data-nav="formulas">Formules</button>
+                    <button class="nav-tab" data-nav="definitions">Définitions</button>
                 </div>
 
                 <div id="grid-container" class="grid-container">
@@ -133,7 +141,7 @@
         <div id="toast"></div>
     </div>
 
-    <script src="script.js?v=6.7"></script>
+    <script src="script.js?v=6.9"></script>
     <script>
       lucide.createIcons();
       function copyLink() {

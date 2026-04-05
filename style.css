@@ -140,6 +140,29 @@ header {
     min-height: 60vh;
 }
 
+.hero-content .welcome-cat {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-soft);
+    color: var(--primary);
+    padding: 0.6rem;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    animation: cat-float 3s ease-in-out infinite;
+    opacity: 0.9;
+}
+
+.hero-content .welcome-cat i {
+    width: 18px;
+    height: 18px;
+}
+
+@keyframes cat-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
 .hero-content h2 {
     font-size: 2.5rem;
     font-weight: 800;

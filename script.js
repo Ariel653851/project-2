@@ -50,11 +50,11 @@ const formulas = [
         units: "C (mol/L), Cm (g/L), M (g/mol)"
     },
     { 
-        id: "n-cv", chapterId: "c-mol-1", title: "5. Quantité de matière (Solution)", 
-        formula: "n = C \\times V", 
-        definition: "Calcul des moles dans un volume V de solution de concentration molaire C.",
+        id: "c-nv", chapterId: "c-mol-1", title: "5. Concentration molaire", 
+        formula: "C = \\frac{n}{V}", 
+        definition: "Relation permettant de calculer la concentration molaire d'une solution.",
         properties: "Valable pour les solutés dissous.",
-        units: "n [Qté matière] (mol), C [Conc. molaire] (mol/L), V [Volume] (L)"
+        units: "C [Conc. molaire] (mol/L), n [Qté matière] (mol), V [Volume] (L)"
     },
     { 
         id: "cm-m-v", chapterId: "c-mol-1", title: "6. Concentration en masse (Cm)", 
@@ -364,6 +364,14 @@ function renderDefinitions() {
             { t: "Intensité (I)", d: "Débit de charges électriques dans un circuit. Elle s'exprime en Ampères (A)." },
             { t: "Tension (U)", d: "Différence de potentiel entre deux points d'un circuit. Elle s'exprime en Volts (V)." },
             { t: "Effet Joule", d: "Dégagement de chaleur lors du passage d'un courant électrique dans un conducteur." }
+        ];
+    } else if (currentChapterId === 'c-dosage-1') {
+        defs = [
+            { t: "Dosage", d: "Action de déterminer la quantité de matière ou la concentration d'une espèce chimique dans une solution." },
+            { t: "Titrage", d: "Dosage par une réaction chimique totale et rapide entre une espèce titrée et une espèce titrante." },
+            { t: "Équivalence", d: "État du titrage où les réactifs ont été introduits dans les proportions stoechiométriques et sont totalement consommés." },
+            { t: "Loi de Beer-Lambert", d: "L'absorbance A d'une solution est proportionnelle à sa concentration C. A = k x C." },
+            { t: "Validité de Beer-Lambert", d: "La solution doit être diluée car la loi de Beer-Lambert n'est vérifiée que pour des concentrations inférieures à 1,0 x 10^-2 mol.L^-1." }
         ];
     } else {
         defs = [{ t: "À venir", d: "Les définitions pour ce chapitre arrivent bientôt ! Ariel les ajoutera prochainement." }];

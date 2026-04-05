@@ -134,7 +134,7 @@ const formulas = [
     },
     { 
         id: "redox-demi", chapterId: "c-redox-1", title: "Demi-équation (Exemple)", 
-        formula: "\\begin{array}{l} \\text{Demi-équation complète :} \\\\ MnO_4^- + 8H^+ + 5e^- = Mn^{2+} + 4H_2O \\\\ \\downarrow \\\\ \\text{Forme simplifiée (seulement redox) :} \\\\ MnO_4^- + 5e^- \\rightarrow Mn^{2+} \\end{array}", 
+        formula: "MnO_4^- + 8H^+ + 5e^- \\rightleftharpoons Mn^{2+} + 4H_2O", 
         definition: "La demi-équation montre le gain ou la perte d'électrons pour un seul couple.",
         properties: "L'oxydant est toujours du côté des électrons (e-).",
         units: "MnO4- [Oxydant], Mn2+ [Réducteur]"

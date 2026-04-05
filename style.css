@@ -553,9 +553,12 @@ header {
     height: 2px; background: var(--primary);
 }
 
-#modal-def {
-    white-space: pre-line; /* Permet d'afficher les étapes ligne par ligne */
-    line-height: 1.6;
+#modal-def, #modal-prop {
+    white-space: pre-line;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: #334155;
+    padding: 0.5rem 0;
 }
 
 .tab-panel { display: none; }

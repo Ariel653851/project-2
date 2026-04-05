@@ -420,13 +420,20 @@ function createCard(f) {
         return `<div class="unit-pill"><span class="pill-sym">${sym}</span><span class="pill-arrow">↑</span><span class="pill-unit">${unit}</span></div>`;
     }).join('') : "";
 
+    // Icônes personnalisées pour les protocoles
+    let protoIcon = "beaker";
+    if (f.id === "pe-etalon-1") protoIcon = "bar-chart-3"; // Étalonnage
+    else if (f.id === "proto-dissol") protoIcon = "droplets"; // Dissolution
+    else if (f.id === "proto-dilut") protoIcon = "test-tubes"; // Dilution
+    else if (f.id === "proto-titrage") protoIcon = "flask-conical"; // Titrage
+
     div.innerHTML = `
         <span class="card-tag ${chapter.subject}">${chapter.subject.toUpperCase()}</span>
         <h3>${f.title}</h3>
         <div class="card-eqn">
             ${isProto ? `
                 <div class="proto-icon-wrapper">
-                    <i data-lucide="beaker" class="proto-svg"></i>
+                    <i data-lucide="${protoIcon}" class="proto-svg"></i>
                 </div>
             ` : `\\[ ${f.formula} \\]`}
         </div>

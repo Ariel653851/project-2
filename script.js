@@ -470,11 +470,11 @@ function openModal(f) {
             if (sym || name || unit) {
                 unitsHtml += `
                     <div class="modal-unit-item">
-                        <div class="mu-sym">${sym}</div>
-                        <div class="mu-details">
-                            <span class="mu-name">${name || "Grandeur"}</span>
-                            <span class="mu-unit">${unit || "Sans unité"}</span>
-                        </div>
+                        <span class="mu-sym">${sym}</span>
+                        <span class="mu-details">
+                            <span class="mu-name">${name ? ' = ' + name : ''}</span>
+                            <span class="mu-unit">${unit ? '(' + unit + ')' : ''}</span>
+                        </span>
                     </div>
                 `;
             }

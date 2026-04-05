@@ -575,13 +575,13 @@ header {
 }
 
 .units-legend {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     text-align: left;
 }
 
 .units-legend h4 { 
-    margin-bottom: 0.75rem; 
-    font-size: 0.9rem; 
+    margin-bottom: 0.5rem; 
+    font-size: 0.8rem; 
     color: var(--text-muted); 
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -589,63 +589,48 @@ header {
 
 .modal-units-grid {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .modal-unit-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: var(--bg);
-    padding: 0.6rem 1rem;
-    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    background: transparent;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
     border: 1px solid var(--border);
-    transition: transform 0.2s;
+    font-size: 0.85rem;
+    transition: background 0.2s;
 }
 
 .modal-unit-item:hover {
-    transform: translateX(4px);
-    border-color: var(--primary);
+    background: var(--bg);
 }
 
 .mu-sym {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 44px;
-    height: 44px;
-    background: white;
     color: var(--primary);
-    font-weight: 800;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    font-weight: 700;
+    font-size: 0.95rem;
+    font-family: serif;
+    font-style: italic;
 }
 
 .mu-details {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.2rem;
-    flex: 1;
+    align-items: baseline;
+    gap: 0.25rem;
 }
 
 .mu-name {
-    font-weight: 700;
     color: var(--text);
-    font-size: 0.95rem;
-    line-height: 1.2;
+    font-weight: 500;
 }
 
 .mu-unit {
-    color: var(--primary);
+    color: var(--text-muted);
     font-size: 0.75rem;
-    font-weight: 800;
-    background: var(--primary-soft);
-    padding: 0.15rem 0.6rem;
-    border-radius: 12px;
-    width: fit-content;
 }
 #copy-btn {
     position: fixed;

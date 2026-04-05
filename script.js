@@ -132,6 +132,13 @@ const formulas = [
         properties: "Ox capte e-, Red cède e-.",
         units: "Ox [Oxydant], Red [Réducteur]"
     },
+    { 
+        id: "redox-demi", chapterId: "c-redox-1", title: "Demi-équation (Exemple)", 
+        formula: "MnO_4^- + 8H^+ + 5e^- = Mn^{2+} + 4H_2O \\\\ \\downarrow \\\\ \\text{Forme simplifiée : } MnO_4^- + 5e^- \\rightarrow Mn^{2+}", 
+        definition: "La demi-équation montre le gain ou la perte d'électrons pour un seul couple.",
+        properties: "L'oxydant est toujours du côté des électrons (e-).",
+        units: "MnO4- [Oxydant], Mn2+ [Réducteur]"
+    },
 
     // --- ÉNERGIE MÉCANIQUE ---
     { 

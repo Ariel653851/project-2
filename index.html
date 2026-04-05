@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=18.0">
+    <link rel="stylesheet" href="style.css?v=19.0">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -40,6 +40,7 @@
             <div class="level-bar">
                 <button class="level-tab active" data-level="1ere">Première</button>
                 <button class="level-tab" data-level="2nde">Seconde</button>
+                <button class="level-tab" data-level="term">Terminale</button>
             </div>
         </header>
 
@@ -59,6 +60,10 @@
                             <button class="hero-card" onclick="selectLevel('1ere')">
                                 <i data-lucide="graduation-cap"></i>
                                 <span>Entrer en Première</span>
+                            </button>
+                            <button class="hero-card secondary" onclick="selectLevel('term')">
+                                <span class="hero-emoji">🎓</span>
+                                <span>Entrer en Terminale</span>
                             </button>
                         </div>
                     </div>
@@ -147,7 +152,7 @@
         <div id="toast"></div>
     </div>
 
-    <script src="script.js?v=18.0"></script>
+    <script src="script.js?v=19.0"></script>
     <script>
         lucide.createIcons();
         function copyLink() {

@@ -15,7 +15,8 @@ const chapters = [
     { id: "p-fluide-1", title: "Fluides", subject: "physique", level: "1ere" },
     { id: "p-inter-1", title: "Interactions Fondamentales", subject: "physique", level: "1ere" },
     { id: "p-ondes-1", title: "Ondes Mécaniques", subject: "physique", level: "1ere" },
-    { id: "proto-chimie-1", title: "Protocoles de Chimie", subject: "protocoles", level: "1ere" }
+    { id: "proto-chimie-1", title: "Protocoles de Chimie", subject: "protocoles", level: "1ere" },
+    { id: "term-empty", title: "À venir...", subject: "chimie", level: "term" }
 ];
 
 // --- DATA: FORMULAS & PROTOCOLS ---
@@ -266,7 +267,7 @@ function render() {
         subjTabs.classList.remove('hidden');
         backBtn.classList.remove('hidden');
         viewTitle.textContent = "Chapitres";
-        levelLabel.textContent = currentLevel === '1ere' ? 'Première' : 'Seconde';
+        levelLabel.textContent = currentLevel === '1ere' ? 'Première' : (currentLevel === 'term' ? 'Terminale' : 'Seconde');
         renderChapters();
     } else if (currentView === 'formulas') {
         appView.classList.remove('hidden');

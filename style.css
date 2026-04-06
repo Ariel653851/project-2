@@ -332,14 +332,14 @@ header {
 /* GRID CONTAINER */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
 }
 
 /* CHAPTER CARD */
 .chapter-card {
     background: white;
-    padding: 1.75rem;
+    padding: 1.25rem;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     cursor: pointer;
@@ -380,7 +380,7 @@ header {
 /* FORMULA CARD */
 .formula-card {
     background: var(--card-bg);
-    padding: 1.5rem;
+    padding: 1.15rem;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     cursor: pointer;

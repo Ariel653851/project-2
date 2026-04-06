@@ -8,7 +8,8 @@ const chapters = [
     { id: "c-mol-1", title: "La Mole & Quantités de Matière", subject: "chimie", level: "1ere" },
     { id: "c-redox-1", title: "Oxydoréduction & Tableau d'avancement", subject: "chimie", level: "1ere" },
     { id: "c-dosage-1", title: "Dosages & Titrages", subject: "chimie", level: "1ere" },
-    { id: "c-lewis-1", title: "Schéma de Lewis, Polarité & Nomenclature", subject: "chimie", level: "1ere" },
+    { id: "c-lewis-1", title: "Schéma de Lewis & Polarité", subject: "chimie", level: "1ere" },
+    { id: "c-nom-1", title: "Nomenclature", subject: "chimie", level: "1ere" },
     { id: "p-optique-1", title: "Optique & Couleurs", subject: "physique", level: "1ere" },
     { id: "p-elec-1", title: "Électricité", subject: "physique", level: "1ere" },
     { id: "p-energie-1", title: "Énergie Mécanique", subject: "physique", level: "1ere" },
@@ -120,7 +121,7 @@ const formulas = [
     { 
         id: "titrage-equiv", chapterId: "c-dosage-1", title: "Relation à l'Équivalence", 
         formula: "\\frac{C_A \\cdot V_A}{a} = \\frac{C_B \\cdot V_{eq}}{b}", 
-        definition: "A l'équivalence, les réactifs sont introduits dans les proportions stoechiométriques.",
+        definition: "L'équivalence est le moment où les réactifs ont été introduits dans les proportions stœchiométriques.",
         properties: "a et b sont les coefficients stoechiométriques.",
         units: "Ca, Cb [Conc.] (mol/L), Va, Veq [Volume] (L)"
     },
@@ -134,7 +135,38 @@ const formulas = [
         units: "Ox [Oxydant], Red [Réducteur]"
     },
 
-
+    { 
+        id: "vsepr-table", chapterId: "c-lewis-1", title: "Tableau de Géométrie (VSEPR)", 
+        formula: `
+            <div class="vsepr-container" style="overflow-x: auto; margin-top: 10px;">
+                <table style="width:100%; border-collapse:collapse; font-size:0.95rem; text-align:center; border: 1px solid #ddd;">
+                    <thead style="background:#f8fafc;">
+                        <tr style="border-bottom: 2px solid #cbd5e1;">
+                            <th style="padding:10px; border:1px solid #e2e8f0;">Total</th>
+                            <th style="padding:10px; border:1px solid #e2e8f0;">Liaisons (X)</th>
+                            <th style="padding:10px; border:1px solid #e2e8f0;">Non-liants (E)</th>
+                            <th style="padding:10px; border:1px solid #e2e8f0;">Formule</th>
+                            <th style="padding:10px; border:1px solid #e2e8f0;">Géométrie</th>
+                            <th style="padding:10px; border:1px solid #e2e8f0;">Nom usuel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="padding:8px; border:1px solid #edf2f7;">2</td><td style="padding:8px; border:1px solid #edf2f7;">2</td><td style="padding:8px; border:1px solid #edf2f7;">0</td><td style="padding:8px; border:1px solid #edf2f7;">AX<sub>2</sub></td><td style="padding:8px; border:1px solid #edf2f7;">Linéaire</td><td style="padding:8px; border:1px solid #edf2f7;"><b>Linéaire</b></td></tr>
+                        <tr><td style="padding:8px; border:1px solid #edf2f7;">3</td><td style="padding:8px; border:1px solid #edf2f7;">3</td><td style="padding:8px; border:1px solid #edf2f7;">0</td><td style="padding:8px; border:1px solid #edf2f7;">AX<sub>3</sub></td><td style="padding:8px; border:1px solid #edf2f7;">Triangulaire plane</td><td style="padding:8px; border:1px solid #edf2f7;"><b>Triangulaire</b></td></tr>
+                        <tr><td style="padding:8px; border:1px solid #edf2f7;">3</td><td style="padding:8px; border:1px solid #edf2f7;">2</td><td style="padding:8px; border:1px solid #edf2f7;">1</td><td style="padding:8px; border:1px solid #edf2f7;">AX<sub>2</sub>E<sub>1</sub></td><td style="padding:8px; border:1px solid #edf2f7;">Coudée en V</td><td style="padding:8px; border:1px solid #edf2f7;"><b>Coudée</b></td></tr>
+                        <tr><td style="padding:8px; border:1px solid #edf2f7;">4</td><td style="padding:8px; border:1px solid #edf2f7;">4</td><td style="padding:8px; border:1px solid #edf2f7;">0</td><td style="padding:8px; border:1px solid #edf2f7;">AX<sub>4</sub></td><td style="padding:8px; border:1px solid #edf2f7;">Tétraédrique</td><td style="padding:8px; border:1px solid #edf2f7;"><b>Tétraédrique</b></td></tr>
+                        <tr><td style="padding:8px; border:1px solid #edf2f7;">4</td><td style="padding:8px; border:1px solid #edf2f7;">3</td><td style="padding:8px; border:1px solid #edf2f7;">1</td><td style="padding:8px; border:1px solid #edf2f7;">AX<sub>3</sub>E<sub>1</sub></td><td style="padding:8px; border:1px solid #edf2f7;">Pyramide trigonale</td><td style="padding:8px; border:1px solid #edf2f7;"><b>Pyramide</b></td></tr>
+                        <tr><td style="padding:8px; border:1px solid #edf2f7;">4</td><td style="padding:8px; border:1px solid #edf2f7;">2</td><td style="padding:8px; border:1px solid #edf2f7;">2</td><td style="padding:8px; border:1px solid #edf2f7;">AX<sub>2</sub>E<sub>2</sub></td><td style="padding:8px; border:1px solid #edf2f7;">Coudée en V</td><td style="padding:8px; border:1px solid #edf2f7;"><b>Coudée</b></td></tr>
+                        <tr><td style="padding:8px; border:1px solid #edf2f7;">5</td><td style="padding:8px; border:1px solid #edf2f7;">5</td><td style="padding:8px; border:1px solid #edf2f7;">0</td><td style="padding:8px; border:1px solid #edf2f7;">AX<sub>5</sub></td><td style="padding:8px; border:1px solid #edf2f7;">Bipyramide trigonale</td><td style="padding:8px; border:1px solid #edf2f7;"><b>Bipyramide</b></td></tr>
+                        <tr><td style="padding:8px; border:1px solid #edf2f7;">6</td><td style="padding:8px; border:1px solid #edf2f7;">6</td><td style="padding:8px; border:1px solid #edf2f7;">0</td><td style="padding:8px; border:1px solid #edf2f7;">AX<sub>6</sub></td><td style="padding:8px; border:1px solid #edf2f7;">Octaédrique</td><td style="padding:8px; border:1px solid #edf2f7;"><b>Octaèdre</b></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        `,
+        definition: "La théorie VSEPR permet de prévoir la géométrie à partir de la répulsion des paires d'électrons autour de l'atome central.",
+        properties: "Ce tableau récapitule les arrangements spatiaux les plus courants rencontrés en classe de Première.",
+        units: ""
+    },
     // --- ÉNERGIE MÉCANIQUE ---
     { 
         id: "ec-1-v3", chapterId: "p-energie-1", title: "Énergie Cinétique", 
@@ -162,28 +194,28 @@ const formulas = [
     { 
         id: "onde-freq", chapterId: "p-ondes-1", title: "Fréquence (f)", 
         formula: "f = \\frac{1}{T}", 
-        definition: "La fréquence représente le nombre de répétitions d'un phénomène périodique par seconde.",
+        definition: "La fréquence est le nombre de fois que le phénomène se répète en une seconde.",
         properties: "La fréquence correspond à l'inverse de la période.",
         units: "f [Fréquence] (Hz), T [Période] (s)"
     },
     { 
         id: "onde-per", chapterId: "p-ondes-1", title: "Période (T)", 
         formula: "T = \\frac{1}{f}", 
-        definition: "La période est la plus petite durée au bout de laquelle le phénomène se répète identique à lui-même.",
+        definition: "La période temporelle correspond au plus petit intervalle de temps au cours duquel le phénomène se répète identique à lui-même.",
         properties: "C'est la durée d'un motif élémentaire. Elle s'exprime en secondes dans le système international.",
         units: "T [Période] (s), f [Fréquence] (Hz)"
     },
     { 
         id: "onde-lambda-t", chapterId: "p-ondes-1", title: "Longueur d'onde avec Période (λ)", 
         formula: "\\lambda = v \\cdot T", 
-        definition: "La longueur d'onde est la distance parcourue par l'onde pendant une période temporelle T.",
+        definition: "La longueur d'onde (la période spatiale) est la plus petite distance séparant deux points en phase",
         properties: "Relation utilisant la période T. v (ou c) est la célérité de l'onde.",
         units: "λ [Longueur d'onde] (m), v [Célérité] (m/s), T [Période] (s)"
     },
     { 
         id: "onde-lambda-f", chapterId: "p-ondes-1", title: "Longueur d'onde avec Fréquence (λ)", 
         formula: "\\lambda = \\frac{v}{f}", 
-        definition: "La longueur d'onde spatiale est proportionnelle à la célérité et inversement proportionnelle à la fréquence temporelle.",
+        definition: "La longueur d'onde (la période spatiale) est la plus petite distance séparant deux points en phase",
         properties: "Relation utilisant la fréquence f. v (ou c) est la célérité de l'onde.",
         units: "λ [Longueur d'onde] (m), v [Célérité] (m/s), f [Fréquence] (Hz)"
     },
@@ -329,7 +361,8 @@ function renderDefinitions() {
             { t: "Réducteur", d: "Espèce chimique capable de céder un ou plusieurs électrons." },
             { t: "Oxydation", d: "Réaction au cours de laquelle une espèce chimique perd des électrons (le réducteur est oxydé)." },
             { t: "Réduction", d: "Réaction au cours de laquelle une espèce chimique gagne des électrons (l'oxydant est réduit)." },
-            { t: "Couple Oxydant / Réducteur", d: "Ensemble formé par l'oxydant et le réducteur qui passent de l'un à l'autre par gain ou perte d'électrons. On le note Ox / Red." }
+            { t: "Couple Oxydant / Réducteur", d: "Ensemble formé par l'oxydant et le réducteur qui passent de l'un à l'autre par gain ou perte d'électrons. On le note Ox / Red." },
+            { t: "Équation d'oxydo-réduction", d: "Une équation d'oxydo-réduction est une réaction au cours de laquelle le réducteur d'un couple cède des électrons à un oxydant d'un autre couple." }
         ];
     } else if (currentChapterId === 'p-optique-1') {
         defs = [
@@ -342,9 +375,9 @@ function renderDefinitions() {
         defs = [
             { t: "Onde Mécanique Progressive", d: "Une onde mécanique progressive est le phénomène de propagation d’une perturbation dans un milieu matériel sans transport de matière et avec transfert d’énergie." },
             { t: "Onde Sonore Périodique", d: "Une onde sonore périodique est le phénomène de propagation d’une succession de zones de compression-dilatation du milieu de propagation, créées par la vibration d’une source (haut-parleur, émetteur d’ultrasons) à la fréquence f." },
-            { t: "Période (T)", d: "Plus petite durée au bout de laquelle le phénomène se répète à l'identique." },
-            { t: "Fréquence (f)", d: "Nombre de motifs élémentaires (périodes) par seconde. f = 1/T." },
-            { t: "Longueur d'onde (λ)", d: "Distance parcourue par l'onde pendant une période T." },
+            { t: "Période (T)", d: "La période temporelle correspond au plus petit intervalle de temps au cours duquel le phénomène se répète identique à lui-même." },
+            { t: "Fréquence (f)", d: "La fréquence est le nombre de fois que le phénomène se répète en une seconde." },
+            { t: "Longueur d'onde (λ)", d: "La longueur d'onde (la période spatiale) est la plus petite distance séparant deux points en phase" },
             { t: "Retard (τ)", d: "Durée mise par une onde pour aller d'un point M à un point M'." }
         ];
     } else if (currentChapterId === 'p-energie-1') {
@@ -363,9 +396,20 @@ function renderDefinitions() {
         defs = [
             { t: "Dosage", d: "Action de déterminer la quantité de matière ou la concentration d'une espèce chimique dans une solution." },
             { t: "Titrage", d: "Dosage par une réaction chimique totale et rapide entre une espèce titrée et une espèce titrante." },
-            { t: "Équivalence", d: "État du titrage où les réactifs ont été introduits dans les proportions stoechiométriques et sont totalement consommés." },
+            { t: "Équivalence", d: "L'équivalence est le moment où les réactifs ont été introduits dans les proportions stœchiométriques." },
             { t: "Loi de Beer-Lambert", d: "L'absorbance A d'une solution est proportionnelle à sa concentration C. A = k x C." },
-            { t: "Validité de Beer-Lambert", d: "La solution doit être diluée car la loi de Beer-Lambert n'est vérifiée que pour des concentrations inférieures à 1,0 x 10^-2 mol.L^-1." }
+            { t: "Validité de Beer-Lambert", d: "La solution doit être diluée car la loi de Beer-Lambert n'est vérifiée que pour des concentrations inférieures à 1,0 x 10^-2 mol.L^-1." },
+            { t: "Vérification de Beer-Lambert", d: "En observant la courbe obtenue, on constate que l'absorbance A est une fonction linéaire de C et il existe donc une relation de proportionnalité entre A et C, ce qui confirme que la loi de Beer-Lambert est vérifiée." },
+            { t: "Choix de λ_max", d: "On choisit la longueur d'onde correspondant au maximum d'absorption car c'est celle où l'espèce absorbe le plus. D'après la loi de Beer-Lambert, cela maximise la différence d'absorbance entre deux solutions de concentrations différentes et rend la mesure plus sensible et plus précise." }
+        ];
+    } else if (currentChapterId === 'c-lewis-1') {
+        defs = [
+            { t: "Règle du duet", d: "Pour les atomes avec Z ≤ 4, ils cherchent à avoir 2 électrons sur leur première couche." },
+            { t: "Règle de l'octet", d: "Pour les atomes avec Z ≥ 5, ils cherchent à avoir 8 électrons sur leur couche externe." },
+            { t: "Doublet liant", d: "Paire d'électrons partagée entre deux atomes pour former une liaison covalente." },
+            { t: "Doublet non-liant", d: "Paire d'électrons de la couche externe d'un atome qui ne participe pas aux liaisons." },
+            { t: "Électronégativité", d: "Grandeur traduisant la capacité d'un atome à attirer les électrons d'une liaison vers lui." },
+            { t: "Liaison polarisée", d: "Liaison entre deux atomes d'électronégativités différentes (différence > 0,4)." }
         ];
     } else {
         defs = [];
@@ -430,7 +474,11 @@ function createCard(f) {
                 <div class="proto-icon-wrapper">
                     <i data-lucide="${protoIcon}" class="proto-svg"></i>
                 </div>
-            ` : `\\[ ${f.formula} \\]`}
+            ` : (f.formula && f.formula.includes('<table') ? `
+                <div class="proto-icon-wrapper" style="background:#f0f9ff; color:#0369a1;">
+                    <i data-lucide="table-2" class="proto-svg"></i>
+                </div>
+            ` : `\\[ ${f.formula} \\]`)}
         </div>
         <div class="bottom-legend-area">${isProto ? "" : pillsHtml}</div>
         <div class="card-footer"><span>${isProto ? 'Voir le protocole' : 'Voir détails'}</span><i data-lucide="arrow-right"></i></div>
@@ -486,9 +534,15 @@ function openModal(f) {
     
     document.getElementById('modal-units').innerHTML = unitsHtml;
     
-    document.getElementById('modal-def').textContent = f.definition;
-    document.getElementById('modal-prop').textContent = f.properties;
-    document.getElementById('math-box').innerHTML = f.formula ? `\\[ ${f.formula} \\]` : "";
+    document.getElementById('modal-def').innerHTML = f.definition || "—";
+    document.getElementById('modal-prop').innerHTML = f.properties || "—";
+    if (f.formula && f.formula.includes('<table')) {
+        document.getElementById('math-box').innerHTML = f.formula;
+        document.getElementById('math-box').style.fontSize = "1.1rem"; // Plus gros
+    } else {
+        document.getElementById('math-box').innerHTML = f.formula ? `\\[ ${f.formula} \\]` : "";
+        document.getElementById('math-box').style.fontSize = "1.8rem"; // Reset normal
+    }
     
     if (isProto) {
         switchTab('def');

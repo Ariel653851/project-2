@@ -216,27 +216,27 @@ const formulas = [
     // --- PROTOCOLES ---
     { 
         id: "pe-etalon-1", chapterId: "proto-chimie-1", title: "Protocole : Dosage par étalonnage", 
-        formula: "", 
+        formula: "", img: "assets/proto_etalonnage.png", 
         definition: "1. Réglage du spectrophotomètre (Le Blanc).\n2. Déterminer λmax (spectre d'absorption).\n3. Préparer des solutions étalons à partir d'une solution mère.\n4. Mesurer l'absorbance de chaque étalon.\n5. Tracer la courbe d'étalonnage A=f(c).\n6. Mesurer l'absorbance de l'inconnue et déduire sa concentration via la courbe.\n\nLoi : A = k × C",
         properties: "", units: ""
     },
     { 
         id: "proto-dissol", chapterId: "proto-chimie-1", title: "Protocole : Dissolution", 
-        formula: "", 
+        formula: "", img: "assets/proto_dissolution.png", 
         definition: "BUT : Préparer une solution à partir d'un solide.\n\n1. Placer la coupelle vide sur la balance et tarer.\n2. Peser exactement la masse m de solide.\n3. Introduire le solide dans la fiole jaugée (entonnoir).\n4. Rincer la coupelle et l'entonnoir (eau distillée).\n5. Remplir la fiole aux 2/3 avec de l'eau distillée.\n6. Boucher et agiter jusqu'à dissolution.\n7. Compléter au trait de jauge.\n8. Agiter pour homogénéiser.",
         properties: "", units: ""
     },
     { 
         id: "proto-dilut", chapterId: "proto-chimie-1", title: "Protocole : Dilution", 
-        formula: "", 
+        formula: "", img: "assets/proto_dilution.png", 
         definition: "BUT : Préparer une solution moins concentrée.\n\n1. Verser la solution mère dans un bécher.\n2. Prélever V_mère avec une pipette jaugée.\n3. Verser dans la fiole jaugée (V_fille).\n4. Compléter avec de l'eau distillée (trait de jauge).\n5. Boucher et agiter pour homogénéiser.\n\nF = V_fille / V_mère = C_mère / C_fille",
         properties: "", units: ""
     },
     { 
         id: "proto-titrage", chapterId: "proto-chimie-1", title: "Protocole : Titrage colorimétrique", 
-        formula: "", 
-        definition: "1. On ajoute petit à petit la solution titrante dans la solution titrée.\n2. Dès la première goutte versée, la réaction chimique se produit immédiatement.\n3. Tant que l'équivalence n'est pas atteinte, le réactif titrant est consommé immédiatement.\n4. À l'équivalence, le réactif titré est lui aussi totalement consommé : on observe un changement de couleur brusque.\n\nVolume à l'équivalence : Veq",
-        properties: "", units: ""
+        formula: "", img: "assets/proto_titrage.png", 
+        definition: "1. On ajoute petit à petit la solution titrante (dans la burette graduée) dans la solution titrée (dans l'Erlenmeyer).\n2. Dès la première goutte versée, la réaction chimique se produit immédiatement.\n3. Tant que l'équivalence n'est pas atteinte, le réactif titrant est consommé immédiatement.\n4. À l'équivalence, le réactif titré est lui aussi totalement consommé : on observe un changement de couleur brusque.\n\nLe montage nécessite une potence (pour la burette) et un agitateur magnétique avec barreau aimanté (pour homogénéiser).",
+        properties: "Volume à l'équivalence : Veq", units: ""
     }
 ];
 
@@ -631,8 +631,78 @@ function openModal(f) {
     }
     
     if (isProto) {
-        switchTab('def');
+        const modalWin = document.querySelector('.modal-window');
+        modalWin.classList.add('protocol-mode');
+        
+        // Custom rendering for protocol: side-by-side
+        const steps = (f.definition || "").split('\n').filter(s => s.trim().length > 0);
+        let stepsHtml = '<ul class="protocol-steps-list">';
+        steps.forEach((step, idx) => {
+            const cleanStep = step.replace(/^\d+\.\s*/, ''); // Remove existing numbers if any
+            stepsHtml += `
+                <li class="protocol-step-item">
+                    <span class="step-number">${idx + 1}</span>
+                    <span class="step-text">${cleanStep}</span>
+                </li>
+            `;
+        });
+        stepsHtml += '</ul>';
+
+        document.querySelector('.modal-body').innerHTML = `
+            <div class="protocol-flex">
+                <div class="protocol-image-side">
+                    <div class="protocol-image-container">
+                        <img src="${f.img}" alt="${f.title}">
+                    </div>
+                    <p style="margin-top:1rem; font-size:0.8rem; color:var(--text-muted); font-weight:600; text-align:center;">
+                        Schéma du montage expérimental
+                    </p>
+                </div>
+                <div id="tab-def" class="protocol-content-container">
+                    <h4 style="margin-bottom:1rem; color:var(--protocoles); text-transform:uppercase; font-size:0.8rem; letter-spacing:0.05em;">Étapes du protocole</h4>
+                    ${stepsHtml}
+                    <div style="margin-top:1.5rem; padding:1rem; background: #fffbeb; border-radius:12px; border:1px solid #fef3c7;">
+                        <h4 style="font-size:0.85rem; color:#92400e; margin-bottom:0.5rem;">Détails & Propriétés</h4>
+                        <p style="font-size:0.9rem; color:#92400e; line-height:1.5;">${f.properties || "—"}</p>
+                    </div>
+                </div>
+            </div>
+        `;
     } else {
+        const modalWin = document.querySelector('.modal-window');
+        modalWin.classList.remove('protocol-mode');
+        
+        // Restore normal modal body structure
+        document.querySelector('.modal-body').innerHTML = `
+            <div class="tab-panel active" id="tab-eqn">
+                <div class="math-display" id="math-box"></div>
+                <div class="units-legend">
+                    <h4>Unités & Symboles :</h4>
+                    <div id="modal-units">—</div>
+                </div>
+            </div>
+            <div class="tab-panel" id="tab-def">
+                <p id="modal-def">—</p>
+            </div>
+            <div class="tab-panel" id="tab-prop">
+                <p id="modal-prop">—</p>
+            </div>
+        `;
+
+        document.getElementById('modal-def').innerHTML = f.definition || "—";
+        document.getElementById('modal-prop').innerHTML = f.properties || "—";
+        if (f.img) {
+            document.getElementById('math-box').innerHTML = `<img src="${f.img}" style="max-width:100%; border-radius:8px; box-shadow: var(--shadow);">`;
+            document.getElementById('math-box').style.fontSize = "1rem";
+        } else if (f.formula && f.formula.includes('<table')) {
+            document.getElementById('math-box').innerHTML = f.formula;
+            document.getElementById('math-box').style.fontSize = "1.1rem";
+        } else {
+            document.getElementById('math-box').innerHTML = f.formula ? `\\[ ${f.formula} \\]` : "";
+            document.getElementById('math-box').style.fontSize = "1.8rem";
+        }
+        
+        document.getElementById('modal-units').innerHTML = unitsHtml;
         switchTab('eqn');
     }
     

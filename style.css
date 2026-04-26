@@ -125,13 +125,17 @@ header { background: var(--card-bg); padding: 1.5rem; border-radius: var(--radiu
     font-size: 1.05rem;
     cursor: pointer;
     color: var(--text-muted);
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
 }
 .sub-tab.active, .level-tab.active {
     background: var(--text);
     color: white;
     border-color: var(--text);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+    transform: scale(1.04);
 }
-.sub-tab:hover, .level-tab:hover { background: var(--bg); }
+.sub-tab:hover:not(.active), .level-tab:hover:not(.active) { background: var(--bg); color: var(--text); }
+.sub-tab:active, .level-tab:active { transform: scale(0.97); }
 
 .nav-tab { color: var(--text-muted); }
 .nav-tab.active { color: var(--primary); background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }

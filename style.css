@@ -44,8 +44,8 @@ header { background: var(--card-bg); padding: 1.5rem; border-radius: var(--radiu
 .hero-actions { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
 .hero-card { background: white; border: 1px solid rgba(0,0,0,0.06); padding: 2.5rem 2rem; border-radius: var(--radius); width: 250px; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); position: relative; overflow: hidden; }
 .hero-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 20px 30px rgba(37,99,235,0.08); }
-.hero-emoji { font-size: 36px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin: 0; }
-.hero-card span { font-weight: 800; font-size: 1.1rem; color: var(--text); }
+.hero-emoji { font-size: 64px; margin-bottom: 0.5rem; display: block; text-align: center; }
+.hero-card span:last-child { font-weight: 800; font-size: 1.1rem; color: var(--text); }
 
 /* GRID ELEMENTS */
 .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }

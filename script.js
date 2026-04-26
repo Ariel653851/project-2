@@ -173,7 +173,7 @@ const formulas = [
     },
     {
         id: "opt-caract", chapterId: "p-optique-1", title: "Caractéristiques de l'image",
-        formula: "\\begin{array}{l} \\text{- Si } \\gamma < 0 : \\text{ image renversée} \\\\ \\text{- Si } \\gamma > 0 : \\text{ image droite} \\\\ \\text{- Si } |\\gamma| > 1 : \\text{ image agrandie} \\\\ \\text{- Si } |\\gamma| < 1 : \\text{ image rétrécie} \\end{array}",
+        formula: "\\small\\begin{array}{l} \\text{- Si } \\gamma < 0 : \\text{ image renversée} \\\\ \\text{- Si } \\gamma > 0 : \\text{ image droite} \\\\ \\text{- Si } |\\gamma| > 1 : \\text{ image agrandie} \\\\ \\text{- Si } |\\gamma| < 1 : \\text{ image rétrécie} \\end{array}",
         definition: "Ces 4 critères permettent de conclure sur la nature de l'image après avoir calculé la valeur de γ.",
         properties: "Analyse de l'image par rapport à l'objet.",
         units: ""
@@ -513,7 +513,7 @@ function renderFormulas() {
     }
     filteredFormulas.forEach(f => {
         const card = createCard(f);
-        if (f.id === 'lewis-polar-1' || f.id === 'opt-caract') card.style.gridColumn = "span 2";
+        if (f.id === 'lewis-polar-1') card.style.gridColumn = "span 2";
         grid.appendChild(card);
     });
 }

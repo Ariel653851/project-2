@@ -513,7 +513,7 @@ function renderFormulas() {
     }
     filteredFormulas.forEach(f => {
         const card = createCard(f);
-        if (f.id === 'lewis-polar-1') card.style.gridColumn = "span 2";
+        if (f.id === 'lewis-polar-1' || f.id === 'opt-caract') card.style.gridColumn = "span 2";
         grid.appendChild(card);
     });
 }

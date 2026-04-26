@@ -137,9 +137,10 @@ header { background: var(--card-bg); padding: 1.5rem; border-radius: var(--radiu
 .sub-tab:hover:not(.active), .level-tab:hover:not(.active) { background: var(--bg); color: var(--text); }
 .sub-tab:active, .level-tab:active { transform: scale(0.97); }
 
-.nav-tab { color: var(--text-muted); }
-.nav-tab.active { color: var(--primary); background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-.nav-tab:hover:not(.active) { color: var(--text); }
+.nav-tab { color: var(--text-muted); font-weight: 700; border-radius: 50px; transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease; }
+.nav-tab.active { color: var(--primary); background: white; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15); transform: scale(1.04); }
+.nav-tab:hover:not(.active) { color: var(--text); background: var(--bg); }
+.nav-tab:active { transform: scale(0.97); }
 .step-number { background: var(--protocoles); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; font-size: 1.1rem; }
 .step-text { font-size: 1.1rem; line-height: 1.6; font-weight: 500; }
 

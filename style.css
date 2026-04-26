@@ -15,9 +15,9 @@
     --radius: 16px;
     --radius-sm: 8px;
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --physique: #059669;
-    --chimie: #c2410c;
-    --protocoles: #0284c7;
+    --physique: #6366f1;
+    --chimie: #e11d48;
+    --protocoles: #0d9488;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,9 +61,9 @@ header { background: var(--card-bg); padding: 1.5rem; border-radius: var(--radiu
 .subj-dot.protocoles { background: var(--protocoles); }
 .card-tag, .card-info { display: block; font-size: 0.7rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.25rem; margin-top: 0.2rem; }
 .card-tag.physique, .card-tag.chimie, .card-tag.protocoles { background: transparent; padding: 0; }
-.card-tag.chimie { color: #0284c7; }
-.card-tag.physique { color: #c2410c; }
-.card-tag.protocoles { color: var(--text-muted); }
+.card-tag.chimie { color: #e11d48; }
+.card-tag.physique { color: #6366f1; }
+.card-tag.protocoles { color: #0d9488; }
 
 /* UNIT PILLS */
 .bottom-legend-area { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; margin-top: auto; }

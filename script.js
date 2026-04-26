@@ -461,9 +461,13 @@ function renderChapters() {
     grid.innerHTML = '';
     let filtered = chapters.filter(c => c.level === currentLevel);
     if (currentSubject !== 'all') filtered = filtered.filter(c => c.subject === currentSubject);
-    filtered.forEach(c => {
+    filtered.forEach((c, i) => {
         const div = document.createElement('div');
         div.className = 'chapter-card';
+        div.style.opacity = '0';
+        div.style.transform = 'translateY(16px)';
+        div.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        div.style.transitionDelay = (i * 0.04) + 's';
         div.innerHTML = `<div class="subj-dot ${c.subject}"></div><div class="card-info">${c.subject.toUpperCase()}</div><h3>${c.title}</h3>`;
         div.onclick = () => {
             currentChapterId = c.id;
@@ -473,6 +477,12 @@ function renderChapters() {
             render();
         };
         grid.appendChild(div);
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                div.style.opacity = '1';
+                div.style.transform = 'translateY(0)';
+            });
+        });
     });
 }
 

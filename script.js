@@ -283,121 +283,33 @@ const formulas = [
     },
     {
         id: "pe-etalon-1", chapterId: "proto-chimie-1", title: "Protocole : Dosage par étalonnage",
-        formula: "",
+        formula: `<img src="assets/proto_etalonnage.png?v=2" style="max-width:100%; border-radius:12px;">`,
         definition: "BUT : Déterminer la concentration d'une espèce colorée en comparant son absorbance à celle de solutions étalons.\n\n1. Réglage du spectrophotomètre (Faire le Blanc).\n2. Déterminer la longueur d'onde de travail λmax.\n3. Préparer une gamme de solutions étalons.\n4. Mesurer l'absorbance et tracer A = f(C).",
         properties: "Loi de Beer-Lambert : A = ε × l × C", units: ""
     },
     {
         id: "proto-dissol", chapterId: "proto-chimie-1", title: "Protocole : Dissolution",
-        formula: `<svg viewBox="0 0 600 900" xmlns="http://www.w3.org/2000/svg" style="background: transparent; width: 100%; height: 100%;">
-            <defs>
-                <linearGradient id="gGlass" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#f8fafc" /><stop offset="50%" stop-color="#ffffff" /><stop offset="100%" stop-color="#e2e8f0" />
-                </linearGradient>
-            </defs>
-            <!-- Fiole jaugée -->
-            <path d="M200 800 Q200 830 230 830 L370 830 Q400 830 400 800 L330 550 L330 350 L270 350 L270 550 L200 800 Z" stroke="#475569" stroke-width="2.5" fill="url(#gGlass)" />
-            <!-- Eau dans fiole -->
-            <path d="M210 790 L390 790 L345 630 L255 630 Z" fill="#7dd3fc" opacity="0.4" />
-            <!-- Trait de jauge -->
-            <line x1="270" y1="450" x2="330" y2="450" stroke="#ef4444" stroke-width="3" />
-            
-            <!-- Entonnoir -->
-            <path d="M260 350 L340 350 L420 180 L180 180 Z" stroke="#475569" stroke-width="2.5" fill="url(#gGlass)" opacity="0.8" />
-            
-            <!-- Coupelle de pesée -->
-            <path d="M210 150 L390 150 L360 100 L240 100 Z" stroke="#475569" stroke-width="2.5" fill="url(#gGlass)" />
-        </svg>`,
+        formula: `<img src="assets/proto_dissolution.png?v=2" style="max-width:100%; border-radius:12px;">`,
         definition: "BUT : Préparer une solution de concentration précise à partir d'un solide.\n\n1. Peser exactement la masse m de solide dans la coupelle.\n2. Introduire le solide dans la fiole jaugée via un entonnoir.\n3. Remplir la fiole aux 2/3 avec de l'eau distillée et agiter.\n4. Compléter jusqu'au trait de jauge, boucher et homogénéiser.",
         properties: "Relation massique : m = C × V × M", units: ""
     },
     {
         id: "proto-dilut", chapterId: "proto-chimie-1", title: "Protocole : Dilution",
-        formula: `<svg viewBox="0 0 600 900" xmlns="http://www.w3.org/2000/svg" style="background: transparent; width: 100%; height: 100%;">
-            <defs>
-                <linearGradient id="gGlass" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#f8fafc" /><stop offset="50%" stop-color="#ffffff" /><stop offset="100%" stop-color="#e2e8f0" />
-                </linearGradient>
-            </defs>
-            <!-- Fiole jaugée (Fille) -->
-            <path d="M200 800 Q200 830 230 830 L370 830 Q400 830 400 800 L330 550 L330 350 L270 350 L270 550 L200 800 Z" stroke="#475569" stroke-width="2.5" fill="url(#gGlass)" />
-            
-            <!-- Pipette jaugée -->
-            <rect x="285" y="100" width="15" height="500" rx="4" stroke="#475569" stroke-width="2.5" fill="url(#gGlass)" />
-            <rect x="275" y="250" width="35" height="150" rx="15" stroke="#475569" stroke-width="2.5" fill="url(#gGlass)" />
-            
-            <!-- Poira à pipeter (Poire) -->
-            <circle cx="292" cy="80" r="35" fill="#ef4444" stroke="#991b1b" stroke-width="3" />
-        </svg>`,
+        formula: `<img src="assets/proto_dilution.png?v=2" style="max-width:100%; border-radius:12px;">`,
         definition: "BUT : Préparer une solution moins concentrée à partir d'une solution mère.\n\n1. Prélever le volume V_mère de solution mère avec une pipette jaugée.\n2. Introduire le prélèvement dans la fiole jaugée de volume V_fille.\n3. Remplir aux 2/3 avec de l'eau distillée et agiter pour mélanger.\n4. Ajuster au trait de jauge avec de l'eau distillée et homogénéiser.",
         properties: "Facteur de dilution : F = V_fille / V_mère", units: ""
     },
     { 
         id: "proto-titrage", chapterId: "proto-chimie-1", title: "Protocole : Titrage colorimétrique", 
-        formula: `<svg viewBox="0 0 600 950" xmlns="http://www.w3.org/2000/svg" style="background: transparent; width: 100%; height: 100%;">
-            <defs>
-                <linearGradient id="gStand" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#94a3b8" /><stop offset="100%" stop-color="#475569" />
-                </linearGradient>
-                <linearGradient id="gGlass" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#f8fafc" /><stop offset="50%" stop-color="#ffffff" /><stop offset="100%" stop-color="#e2e8f0" />
-                </linearGradient>
-                <linearGradient id="gTitrant" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#d8b4fe" /><stop offset="100%" stop-color="#a855f7" />
-                </linearGradient>
-                <linearGradient id="gTitree" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#bae6fd" /><stop offset="100%" stop-color="#7dd3fc" />
-                </linearGradient>
-            </defs>
-
-            <!-- Agitateur Magnétique (Base) -->
-            <rect x="150" y="850" width="300" height="70" rx="15" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
-            <circle cx="400" cy="885" r="12" fill="#94a3b8" /> <!-- Bouton -->
-            <rect x="180" y="870" width="50" height="20" rx="6" fill="#cbd5e1" /> <!-- Écran -->
-
-            <!-- Potence (Socle + Tige) -->
-            <rect x="50" y="900" width="150" height="20" rx="6" fill="url(#gStand)" />
-            <rect x="90" y="50" width="12" height="850" rx="6" fill="url(#gStand)" />
-            
-            <!-- Pinces de la potence -->
-            <!-- Pince haute -->
-            <rect x="100" y="150" width="160" height="15" rx="5" fill="#64748b" />
-            <rect x="245" y="140" width="30" height="35" rx="3" fill="#475569" />
-            
-            <!-- Pince basse -->
-            <rect x="100" y="600" width="160" height="15" rx="5" fill="#64748b" />
-            <rect x="245" y="590" width="30" height="35" rx="3" fill="#475569" />
-
-            <!-- Burette Graduée -->
-            <rect x="250" y="30" width="22" height="650" rx="4" stroke="#475569" stroke-width="2.5" fill="url(#gGlass)" opacity="0.95" />
-            <!-- Solution Titrante dans Burette -->
-            <rect x="253" y="80" width="16" height="420" fill="url(#gTitrant)" opacity="0.7" />
-            
-            <!-- Graduations détaillées -->
-            <line x1="250" y1="100" x2="265" y2="100" stroke="#475569" stroke-width="1.5" />
-            <line x1="250" y1="150" x2="260" y2="150" stroke="#475569" stroke-width="1" />
-            <line x1="250" y1="200" x2="265" y2="200" stroke="#475569" stroke-width="1.5" />
-            <line x1="250" y1="250" x2="260" y2="250" stroke="#475569" stroke-width="1" />
-            <line x1="250" y1="300" x2="265" y2="300" stroke="#475569" stroke-width="1.5" />
-            <line x1="250" y1="350" x2="260" y2="350" stroke="#475569" stroke-width="1" />
-            <line x1="250" y1="400" x2="265" y2="400" stroke="#475569" stroke-width="1.5" />
-            <line x1="250" y1="450" x2="260" y2="450" stroke="#475569" stroke-width="1" />
-            <line x1="250" y1="500" x2="265" y2="500" stroke="#475569" stroke-width="1.5" />
-
-            <!-- Robinet de la burette -->
-            <path d="M250 680 L272 680 L261 715 Z" fill="#475569" stroke="#334155" stroke-width="1" />
-            <rect x="235" y="690" width="50" height="10" rx="3" fill="#1e293b" /> <!-- Poignée -->
-
-            <!-- Erlenmeyer -->
-            <path d="M235 760 L285 760 L360 850 L160 850 Z" stroke="#475569" stroke-width="2.5" fill="url(#gGlass)" />
-            <!-- Solution Titrée dans Erlen -->
-            <path d="M185 815 L335 815 L355 845 L165 845 Z" fill="url(#gTitree)" opacity="0.6" />
-            
-            <!-- Barreau Aimanté (Pill shape) -->
-            <rect x="235" y="835" width="50" height="12" rx="6" fill="#0f172a" /> 
-        </svg>`, 
+        formula: `<img src="assets/proto_titrage.png?v=2" style="max-width:100%; border-radius:12px;">`,
         definition: "BUT : Déterminer la concentration d'une espèce en solution par une réaction chimique totale et rapide.\n\n1. On ajoute petit à petit la solution titrante (dans la burette graduée) dans la solution titrée (dans l'Erlenmeyer).\n2. Dès la première goutte versée, la réaction chimique se produit immédiatement.\n3. Tant que l'équivalence n'est pas atteinte, le réactif titrant est consommé immédiatement.\n4. À l'équivalence, le réactif titré est lui aussi totalement consommé.",
         properties: "Volume à l'équivalence : Veq", units: ""
+    },
+    { 
+        id: "proto-extraction", chapterId: "proto-chimie-1", title: "Protocole : Extraction liquide-liquide", 
+        formula: `<img src="assets/proto_extraction.png?v=2" style="max-width:100%; border-radius:12px;">`,
+        definition: "BUT : Extraire une espèce chimique d'un mélange à l'aide d'un solvant dans lequel elle est plus soluble.\n\n1. On ajoute le solvant B au mélange initial ;\n2. On agite puis on laisse décanter : les deux phases se séparent ;\n3. L’espèce passe dans la phase où elle est plus soluble ;\n4. On récupère la phase contenant l’espèce d’intérêt",
+        properties: "On utilise une ampoule à décanter.", units: ""
     }
 ];
 
@@ -603,6 +515,7 @@ function createCard(f) {
     else if (f.id === "proto-dissol") protoIcon = "droplets"; // Dissolution
     else if (f.id === "proto-dilut") protoIcon = "test-tubes"; // Dilution
     else if (f.id === "proto-titrage") protoIcon = "flask-conical"; // Titrage
+    else if (f.id === "proto-extraction") protoIcon = "layers"; // Extraction
 
     div.innerHTML = `
         <span class="card-tag ${chapter.subject}">${chapter.subject.toUpperCase()}</span>
@@ -668,41 +581,20 @@ function openModal(f) {
         });
         stepsHtml += '</div>';
 
-        const labelsMap = {
-            'proto-dissol': `
-                <div class="titration-label l-coupelle">Coupelle de pesée</div>
-                <div class="titration-label l-entonnoir">Entonnoir</div>
-                <div class="titration-label l-fiole">Fiole jaugée</div>
-                <div class="titration-label l-trait">Trait de jauge</div>`,
-            'proto-dilut': `
-                <div class="titration-label l-poire">Poire à pipeter</div>
-                <div class="titration-label l-pipette">Pipette jaugée</div>
-                <div class="titration-label l-fiole-dil">Fiole jaugée</div>`,
-            'proto-titrage': `
-                <div class="titration-label l-burette">Burette graduée</div>
-                <div class="titration-label l-sol-titrante">Solution titrante</div>
-                <div class="titration-label l-erlen">Erlenmeyer</div>
-                <div class="titration-label l-sol-titree">Solution titrée</div>
-                <div class="titration-label l-barreau">Barreau aimanté</div>
-                <div class="titration-label l-stirrer">Agitateur magnétique</div>
-                <div class="titration-label l-potence">Potence</div>`
-        };
-
         modalBody.innerHTML = `
-            <div class="protocol-flex">
-                <div class="protocol-content-container">
+            <div class="protocol-flex" style="display:flex; flex-direction:row; width:100%; gap:20px;">
+                <div class="protocol-content-container" style="flex:1; min-width:0;">
                     ${butHtml}
-                    <h4 class="proto-section-title" style="margin-top:20px; font-weight:800; font-size:1rem; color:var(--protocoles); letter-spacing:0.05em; text-transform:uppercase;">Étapes à suivre</h4>
+                    <h4 class="proto-section-title" style="margin-top:10px; font-weight:800; font-size:0.85rem; color:var(--protocoles); letter-spacing:0.05em; text-transform:uppercase;">Étapes à suivre</h4>
                     ${stepsHtml}
                     ${f.properties ? `
-                    <div class="proto-props-box" style="margin-top:20px; background:#fff7ed; padding:20px; border-radius:12px; border-left:4px solid #f97316;">
+                    <div class="proto-props-box" style="margin-top:10px; background:#fff7ed; padding:12px 16px; border-radius:12px; border-left:4px solid #f97316;">
                         <h5 style="color:#9a3412; font-weight:800; margin-bottom:8px; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.05em;">Détails techniques</h5>
                         <p style="color:#c2410c; font-weight:700; font-size:0.9rem;">${f.properties}</p>
                     </div>` : ''}
                 </div>
-                <div class="protocol-image-container" style="position:relative;">
-                    ${labelsMap[f.id] || ''}
-                    ${f.formula || `<img src="${f.img}" style="max-width:100%;">`}
+                <div class="protocol-image-container" style="flex:1.5; min-width:0; background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:10px; display:flex; align-items:center; justify-content:center;">
+                    ${f.formula || (f.img ? `<img src="${f.img}" style="max-width:100%; border-radius:8px;">` : '<p>Image manquante</p>')}
                 </div>
             </div>
         `;

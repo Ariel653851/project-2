@@ -295,7 +295,7 @@ const formulas = [
     },
     {
         id: "proto-dilut", chapterId: "proto-chimie-1", title: "Protocole : Dilution",
-        formula: `<img src="assets/proto_dilution.png?v=2" style="max-width:100%; border-radius:12px;">`,
+        formula: `<img src="assets/proto_dilution_v3.png?v=4" style="max-width:100%; border-radius:12px;">`,
         definition: "BUT : Préparer une solution moins concentrée à partir d'une solution mère.\n\n1. Prélever le volume V_mère de solution mère avec une pipette jaugée.\n2. Introduire le prélèvement dans la fiole jaugée de volume V_fille.\n3. Remplir aux 2/3 avec de l'eau distillée et agiter pour mélanger.\n4. Ajuster au trait de jauge avec de l'eau distillée et homogénéiser.",
         properties: "Facteur de dilution : F = V_fille / V_mère", units: ""
     },
@@ -375,10 +375,8 @@ function renderChapters() {
     if (currentSubject !== 'all') filtered = filtered.filter(c => c.subject === currentSubject);
     filtered.forEach((c, i) => {
         const div = document.createElement('div');
-        div.className = 'chapter-card';
+        div.className = `chapter-card ${c.subject}`;
         div.style.opacity = '0';
-        div.style.transform = 'translateY(16px)';
-        div.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         div.style.transitionDelay = (i * 0.04) + 's';
         div.innerHTML = `<div class="subj-dot ${c.subject}"></div><div class="card-info">${c.subject.toUpperCase()}</div><h3>${c.title}</h3>`;
         div.onclick = () => {
@@ -392,7 +390,6 @@ function renderChapters() {
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 div.style.opacity = '1';
-                div.style.transform = 'translateY(0)';
             });
         });
     });

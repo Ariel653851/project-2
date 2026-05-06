@@ -62,14 +62,18 @@ header { background: var(--card-bg); padding: 1.5rem; border-radius: var(--radiu
     gap: 0.75rem; 
     position: relative;
     z-index: 1;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.4s ease;
+    will-change: transform;
 }
 
 .chapter-card:hover, .formula-card:hover { 
-    transform: translateY(-8px) scale(1.03); 
-    border-color: var(--primary); 
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
+    transform: translateY(-6px) scale(1.02); 
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1); 
     z-index: 10;
 }
+.chapter-card.physique:hover, .formula-card.physique:hover { border-color: var(--physique); }
+.chapter-card.chimie:hover, .formula-card.chimie:hover { border-color: var(--chimie); }
+.chapter-card.protocoles:hover, .formula-card.protocoles:hover { border-color: var(--protocoles); }
 
 /* Animation spéciale pour le point du sujet sur les chapitres */
 .chapter-card:hover .subj-dot {
@@ -113,10 +117,11 @@ header { background: var(--card-bg); padding: 1.5rem; border-radius: var(--radiu
 .card-tag.protocoles { color: #ca8a04; }
 
 /* UNIT PILLS */
-.bottom-legend-area { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; margin-top: auto; }
-.unit-pill { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border: 1px solid var(--border); border-radius: 50px; background: white; white-space: nowrap; }
+.bottom-legend-area { display: flex; gap: 0.35rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.8rem; margin-top: auto; }
+.unit-pill { display: inline-flex; align-items: center; gap: 0.2rem; font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.4rem; border: 1px solid var(--border); border-radius: 50px; background: white; white-space: nowrap; transition: all 0.2s ease; }
+.unit-pill:hover { border-color: var(--primary); transform: translateY(-1px); }
 .pill-sym { color: var(--text); }
-.pill-arrow { color: var(--primary); font-size: 0.8rem; margin: 0 -1px; }
+.pill-arrow { color: var(--primary); font-size: 0.7rem; margin: 0 -1px; }
 .pill-unit { color: var(--primary); }
 
 /* CARD FOOTER */

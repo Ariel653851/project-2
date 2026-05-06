@@ -165,18 +165,18 @@ const formulas = [
         units: "δ [Vergence] (δ/dioptries), OF' [Distance focale] (m)"
     },
     {
-        id: "opt-gamma", chapterId: "p-optique-1", title: "Gamma",
+        id: "opt-gamma", chapterId: "p-optique-1", title: "Gamma (Grandissement)",
         formula: "\\gamma = \\frac{\\overline{A'B'}}{\\overline{AB}} = \\frac{\\overline{OA'}}{\\overline{OA}}",
         definition: "Le grandissement γ quantifie le rapport de taille et le sens de l'image par rapport à l'objet.",
-        properties: "Gamma est sans unité.",
-        units: "A'B' [Taille image], AB [Taille objet], OA' [Pos. image], OA [Pos. objet]"
+        properties: "Gamma est sans unité. Il définit si l'image est droite ou renversée.",
+        units: "A'B', AB [Tailles], OA', OA [Positions]"
     },
     {
         id: "opt-caract", chapterId: "p-optique-1", title: "Caractéristiques de l'image",
-        formula: "\\small\\begin{array}{l} \\text{- Si } \\gamma < 0 : \\text{ image renversée} \\\\ \\text{- Si } \\gamma > 0 : \\text{ image droite} \\\\ \\text{- Si } |\\gamma| > 1 : \\text{ image agrandie} \\\\ \\text{- Si } |\\gamma| < 1 : \\text{ image rétrécie} \\end{array}",
-        definition: "Ces 4 critères permettent de conclure sur la nature de l'image après avoir calculé la valeur de γ.",
-        properties: "Analyse de l'image par rapport à l'objet.",
-        units: ""
+        formula: "\\begin{cases} \\gamma < 0 : \\text{Image renversée} \\\\ \\gamma > 0 : \\text{Image droite} \\\\ |\\gamma| > 1 : \\text{Image agrandie} \\\\ |\\gamma| < 1 : \\text{Image rétrécie} \\end{cases}",
+        definition: "Critères de conclusion sur la nature de l'image par rapport à l'objet.",
+        properties: "Analyse basée sur le signe et la valeur absolue de γ.",
+        units: "γ [Grandissement]"
     },
 
     // --- DOSAGES & TITRAGES ---
@@ -533,7 +533,7 @@ function createCard(f) {
                 <div class="proto-icon-wrapper" style="background:#f0f9ff; color:#0369a1;">
                     <i data-lucide="table-2" class="proto-svg"></i>
                 </div>
-            ` : (f.formula.includes('<') ? f.formula : `\\[ ${f.formula} \\]`)))}
+            ` : (f.formula.startsWith('<') ? f.formula : `\\[ ${f.formula} \\]`)))}
         </div>
         <div class="bottom-legend-area">${isProto ? "" : pillsHtml}</div>
         <div class="card-footer"><span>${isProto ? 'Voir le protocole' : (f.img ? 'Agrandir le tableau' : 'Voir détails')}</span><i data-lucide="arrow-right"></i></div>
@@ -639,7 +639,7 @@ function openModal(f) {
         if (f.img) {
             mathBox.innerHTML = `<img src="${f.img}" style="max-width:100%; border-radius:8px; box-shadow: var(--shadow);">`;
         } else if (f.formula) {
-            mathBox.innerHTML = f.formula.includes('<') ? f.formula : `\\[ ${f.formula} \\]`;
+            mathBox.innerHTML = f.formula.startsWith('<') ? f.formula : `\\[ ${f.formula} \\]`;
         }
         switchTab('eqn');
     }
